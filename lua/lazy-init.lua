@@ -25,7 +25,7 @@ require("lazy").setup("plugins")
 
 -- 4. lazy.nvim 模块的高亮设置
 -- 背景
-vim.api.nvim_set_hl(0, "LazyNormal", { bg = "#323647", fg = "#b5bfe2" })
+vim.api.nvim_set_hl(0, "LazyNormal", { bg = "#51576d", fg = "#a0acda" })
 -- 标题
 vim.api.nvim_set_hl(0, "LazyH1", { bg = "#909bb8", fg = "#d2e0fd", bold = true })  -- HOME
 vim.api.nvim_set_hl(0, "LazyH2", { fg = "#d2e0fd", bold = true })  -- 主要是 total 之类的

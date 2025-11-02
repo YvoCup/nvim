@@ -1,4 +1,4 @@
-vim.api.nvim_set_hl(0, "BlankLine",       { bg = none, fg = "#626880" })
+vim.api.nvim_set_hl(0, "BlankLine",       { bg = none, fg = "#656c87" })  -- black normal 600
 vim.api.nvim_set_hl(0, "BlankLineActive", { bg = none, fg = "#61AFEF" })
 
 return {
