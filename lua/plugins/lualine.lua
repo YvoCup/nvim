@@ -4,6 +4,18 @@ return {
   config = function()
     require("lualine").setup({
       options = {
+        -- 必须有这个覆盖 lualine 的底层颜色系
+        theme = function()
+          local custom_theme = require("lualine.themes.gruvbox")
+          local bg = "#323647"
+          custom_theme.normal.c.bg = bg
+          custom_theme.insert.c.bg = bg
+          custom_theme.visual.c.bg = bg
+          custom_theme.replace.c.bg = bg
+          custom_theme.command.c.bg = bg
+          custom_theme.inactive.c.bg = bg
+          return custom_theme
+        end,
         icons_enabled = true,  -- 启用图标
         globalstatus = true,   -- 下划线全局启用
         -- 删除了每个组件中间的符号
@@ -176,10 +188,7 @@ return {
             },
             update_in_insert = true,
             always_visible = true,
-            color = {
-              bg = "#51576d",
-              fg = none
-            },
+            color = { bg = "#51576d" },
             separator = { left  = '', right = '' },
           },
         },
@@ -199,14 +208,12 @@ return {
               end
             end,
             colored = true,
-            padding = { left = 0, right = 1 },
             symbols = {
               added = ' ',
               modified = ' ',
               removed = ' ',
             },
-            color = { bg = "#51576d" },
-            separator = { left  = '', right = '' },
+            color = { bg = "#323647" },
           },
         },
         --------------------------------------------------- y ----------------------------------------------------------
