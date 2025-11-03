@@ -41,18 +41,13 @@ vim.o.fillchars = "vert:│,horiz:─,eob: "
 vim.opt.foldcolumn = '0'
 
 -- 设置默认 tab 为两个空格
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
 vim.o.expandtab = true
 -- 文件类型 -> 缩进宽度
--- 想加新类型直接往表里写一行即可
+-- 想加新类型直接往表里写一行即可，只对必须非两个的进行书写
 local ft_indent = {
   python     = 4,
-  java       = 2,
-  lua        = 2,
-  html       = 2,
-  javascript = 2,
-  xml        = 2,
 }
 for ft, width in pairs(ft_indent) do
   vim.api.nvim_create_autocmd("FileType", {
