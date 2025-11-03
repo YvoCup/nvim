@@ -15,6 +15,6 @@ end
 
 load_lua_modules("core")
 require("lazy-init")  -- 插件
-load_lua_modules("lsp")
-load_lua_modules("dap")
+-- load_lua_modules("lsp")
+-- load_lua_modules("dap")
 

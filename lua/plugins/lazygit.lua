@@ -13,6 +13,6 @@ return {
     "LazyGitFilterCurrentFile",
   },
   keys = {
-    { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    { mode = "n", "<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit" }
   }
 }
