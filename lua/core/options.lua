@@ -59,3 +59,4 @@ for ft, width in pairs(ft_indent) do
     end,
   })
 end
+
