@@ -77,6 +77,19 @@ local color = {
   cyan_900 = "#588a83",
   cyan_950 = "#54857e",
 
+  -- purple
+  purplr_50  = "#fbf0fb",
+  purplr_100 = "#f6def6",
+  purplr_200 = "#eebcee",
+  purplr_300 = "#e599e5",
+  purplr_400 = "#dd74dd",
+  purplr_500 = "#d460d4",
+  purplr_600 = "#be55be",
+  purplr_700 = "#a84aa8",
+  purplr_800 = "#924092",
+  purplr_900 = "#813781",
+  purplr_950 = "#773277",
+
   -- WightNormal（注意拼写，可能是笔误）
   wightNormal_50  = "#eff0f8",
   wightNormal_100 = "#dee2f2",
