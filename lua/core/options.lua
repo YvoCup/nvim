@@ -23,9 +23,8 @@ opt.mouse:append("a")
 -- 系统剪切板
 opt.clipboard:append("unnamedplus")
 
--- 设置 signcolumn 始终显示，可以根据需要更改这个设置
-opt.signcolumn = "yes:1"
-vim.api.nvim_set_hl(0, "SignColumn", {bg = none})
+-- HACK: 这是实现左侧栏的按照逻辑位置进行工作的函数，基于此再拓展即可
+opt.stc = '%!v:lua.require("core.statuscolumn").stc()'
 
 -- 默认新窗口右和下
 opt.splitright = true
@@ -47,7 +46,7 @@ vim.o.expandtab = true
 -- 文件类型 -> 缩进宽度
 -- 想加新类型直接往表里写一行即可，只对必须非两个的进行书写
 local ft_indent = {
-  python     = 4,
+  python = 4,
 }
 for ft, width in pairs(ft_indent) do
   vim.api.nvim_create_autocmd("FileType", {
