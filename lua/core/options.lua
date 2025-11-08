@@ -23,6 +23,9 @@ opt.mouse:append("a")
 -- 系统剪切板
 opt.clipboard:append("unnamedplus")
 
+-- 将下面的命令行隐藏起来
+vim.o.cmdheight = 0
+
 -- HACK: 这是实现左侧栏的按照逻辑位置进行工作的函数，基于此再拓展即可
 opt.stc = '%!v:lua.require("core.statuscolumn").stc()'
 

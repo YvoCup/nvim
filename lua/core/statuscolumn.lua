@@ -31,8 +31,7 @@ local function get_signs(bufnr, lnum, name)
     bufnr, -1, {lnum, 0}, {lnum, -1},
     {details = true, type = "sign"}
   )
-  -- HACK: 找第一个属于 GitSign 的 mark
-  --       mark 会返回如下格式
+  -- HACK: 找第一个属于 GitSign 的 mark, mark 会返回如下格式
   --       {
   --         extmark_id,            -- [1] 内部 id
   --         lnum,                  -- [2] 行号（0-index）

@@ -5,12 +5,9 @@ return {
   event = "VeryLazy",
   config = function()
     require("todo-comments").setup({
-      highlight = {
-        priority = 200
-      },
       keywords = {
         -- INFO: 简单基础的介绍，主要介绍基本的功能
-        INFO = { icon = " ", color = "#79bdb3" },
+        INFO = { icon = " ", color = "#a6dbff" },
         -- WARN: 警告部分，警告用法或者写法
         WARN = { icon = " ", color = "#e5c890" },
         -- BUGS: 这是一个 bug
