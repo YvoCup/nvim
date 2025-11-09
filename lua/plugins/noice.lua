@@ -1,8 +1,10 @@
+-- FILE: lua/plugins/noice.nvim
+-- INFO: 这个看着像是一个封装好了 notify 的高级能力，我主要是看上了其 cmd plattem 能力
+
+----------------------------------------------------- highlight --------------------------------------------------------
 vim.api.nvim_set_hl(0, "NoiceNormal", { fg = "#8caaee", bg = "none", bold = true })
 vim.api.nvim_set_hl(0, "NoiceFloatBorder", { fg = "#8caaee", bg = "none"})
 
--- FILE: pligins/noice.nvim
--- INFO: 这个看着像是一个封装好了 notify 的高级能力，我主要是看上了其 cmd plattem 能力
 return {
   "folke/noice.nvim",
   dependencies = {
@@ -10,7 +12,7 @@ return {
     "rcarriga/nvim-notify",
   },
   event = "VeryLazy",
-
+  ---------------------------------------------------- config ----------------------------------------------------------
   config = function()
     require("noice").setup({
       -- 消息栏的显示问题
@@ -73,5 +75,8 @@ return {
         },
       },
     })
-  end
+  end,
+  keys = {
+  }
 }
+

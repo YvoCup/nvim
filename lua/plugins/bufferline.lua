@@ -1,11 +1,11 @@
 -- FILE: lua/plugins/bufferline.lua
 -- INFO: 顶部栏，拥有了就能够对多文件进程控制啦！
+
 return {
   "akinsho/bufferline.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  -- INFO: VeryLazy
   event = "VeryLazy",
-  -- INFO: config
+  ---------------------------------------------------- config ----------------------------------------------------------
   config = function()
     require("bufferline").setup({
       highlights = {
@@ -21,8 +21,8 @@ return {
         numbers_visible  = { fg = "#8f9ac2" },
         numbers_selected = { fg = "#c8d4f6" },
         -- 修改图标的高亮
-        modified = { fg = "#8f9ac2" },
-        modified_visible  = { fg = "#8f9ac2" },
+        modified = { fg = "#e78284" },
+        modified_visible  = { fg = "#e78284" },
         modified_selected = { fg = "#e78284" },
       },
       options = {
@@ -83,7 +83,7 @@ return {
       },
     })
   end,
-  -- INFO: keys
+  ----------------------------------------------------- keys -----------------------------------------------------------
   keys = {
     -- 左右移动以及快速交换位置
     {
@@ -132,7 +132,7 @@ return {
     {
       mode = { "n" },
       "tq",
-      "<cmd>q<cr>",
+      "<cmd>bdelete<cr>",
       desc = "just normal close"
     },
   }
