@@ -41,6 +41,7 @@ return {
     })
   end,
   keys = {
+    -- 本文件中快速跳转
     {
       mode = { "n" },
       "<leader>tj",
@@ -61,14 +62,14 @@ return {
       end,
       desc = "previous error/warning todo comment",
     },
-    -- telescope 查阅，不会列出一般信息类选项
+    -- telescope 查阅，不会列出一般信息类选项，全局
     {
       mode = { "n" },
       "<leader>tt",
       "<cmd>TodoTelescope keywords=TODO,WARN,OPTM,PERF,BUGS,DEAD,MARK,INFO<cr>",
       desc = "toggle todo telescope"
     },
-    -- 列出几个关键的需要快速修复的问题
+    -- 列出几个关键的需要快速修复的问题，全局
     { 
       mode = { "n" },
       "<leader>tq",
@@ -81,6 +82,15 @@ return {
       "<leader>tl",
       "<cmd>TodoLocList keywords=TODO,WARN,OPTM,BUGS,DEAD,MARK,INFO<cr>",
       desc = "toggle todo Local list"
+    },
+    {
+      mode = { "n" },
+      "<leader>th",
+      function()
+        local cur_file = vim.fn.expand('%:p')
+        vim.cmd("TodoLocList cwd=" .. cur_file .. " keywords=TODO,WARN,OPTM,BUGS,DEAD,MARK,INFO")
+      end,
+      desc = "toggle todo local list in this file"
     },
     -- 专门针对 MRAK 做一层标记查阅
     {
