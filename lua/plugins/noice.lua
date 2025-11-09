@@ -36,12 +36,12 @@ return {
         },
         -- 避免所有为空内容的消息弹出
         {
-        filter = {
-          event = "msg_show",
-          kind = "",
+          filter = {
+            event = "msg_show",
+            kind = "",
+          },
+          opts = { skip = true },
         },
-        opts = { skip = true },
-      },
       },
       -- 视图，是命令行、命令行提示的主要部分
       views = {
@@ -74,9 +74,38 @@ return {
           },
         },
       },
+      -- 这个是针对使用 :Noice <para> 下的进一步工作
+      -- 可以专门设置其 filter 等等逻辑
+      commands = {
+        history = {
+          view = "popup",
+        },
+        all = {
+          view = "popup",
+        },
+      },
     })
   end,
+  ----------------------------------------------------- keys -----------------------------------------------------------
   keys = {
+    {
+      mode = "n",
+      "<leader>nt",
+      "<cmd>NoiceTelescope<cr>",
+      desc = "noice history telescope"
+    },
+    {
+      mode = "n",
+      "<leader>nl",
+      "<cmd>Noice history<cr>",
+      desc = "noice history telescope"
+    },
+    {
+      mode = "n",
+      "<leader>nL",
+      "<cmd>Noice all<cr>",
+      desc = "noice history telescope"
+    },
   }
 }
 
