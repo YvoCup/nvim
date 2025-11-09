@@ -8,7 +8,12 @@ return {
       -- 确保安装的 treesitter 头目
       ensure_installed = {
         "lua",
-        "python"
+        "python",
+        "cpp",
+        "c",
+        "typescript",
+        "javascript",
+        "json",
       },
 
       -- 高亮启用

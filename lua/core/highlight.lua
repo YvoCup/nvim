@@ -215,8 +215,8 @@ hi("Title",      { fg = color.red_400 })   -- 标题
 hi("Directory",  { fg = color.blue_400 })  -- 与文档相关操作
 
 -- 搜索与匹配
-hi("Search",    { fg= color.blackNormal_600, bg = color.blue_400, gui = "bold" })
-hi("CurSearch", { fg= color.blackNormal_600, bg = color.blue_400, gui = "bold" })
+hi("Search",    { bg = color.wightNormal_500, gui = "bold" })
+hi("CurSearch", { bg = color.wightNormal_500, gui = "bold" })
 hi("Visual",    { bg = color.blackNormal_600, gui = "bold" })
 
 -- hi("Added",      { fg = color.green })
