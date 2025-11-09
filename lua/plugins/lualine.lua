@@ -107,13 +107,13 @@ return {
               local file_dir = vim.fn.expand("%:p:h")          -- 当前文件所在绝对目录
               if file_dir == "" then return "" end             -- 无落地文件，空
 
-              -- 1. 拿 git 根
+              -- 拿 git 根
               local git_root = vim.fn.systemlist(
-                'git -C "' .. file_dir:gsub('"', '\\"') .. '" rev-parse --show-toplevel'
+                "git -C '" .. file_dir:gsub('"', '\\"') .. "' rev-parse --show-toplevel"
               )[1]
               if vim.v.shell_error == 0 and git_root then
                 -- 有仓库：当前文件目录 相对于 git 根
-                local rel = vim.fn.fnamemodify(file_dir, ":." .. git_root .. "/")
+                local rel = file_dir:gsub('^' .. vim.pesc(git_root) .. '/', '')
                 return rel
               else
                 -- 无仓库：直接缩写成 ~
