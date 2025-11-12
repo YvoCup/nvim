@@ -1,3 +1,6 @@
+
+-- TODO: 建议走 nui 的浮动窗口去实现好之后的浮动窗口阅读能力
+
 return {
   "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
@@ -38,8 +41,23 @@ return {
         -- FILE: 文件名
         FILE = { icon = " ", color = "#81c8be" },
       },
+      search = {
+    command = 'rg',
+    args = {
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--hidden',
+      '--glob=!.git',
+    },
+    -- 默认是 quickfix，这里改成 noice
+    pattern = [[\b(KEYWORDS)\b]], -- KEYWORDS 占位符会被插件替换成 TODO|FIXME|WARN
+  },
     })
   end,
+  ----------------------------------------------------- keys -----------------------------------------------------------
   keys = {
     -- 本文件中快速跳转
     {
