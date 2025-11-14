@@ -1,4 +1,3 @@
------------------------------------------------------- function -------------------------------------------------------
 local function load_lua_modules(subdir)
   -- 拼接完整路径：~/.config/nvim/lua/<subdir>
   local path = vim.fn.stdpath('config') .. '/lua/' .. subdir
@@ -14,7 +13,12 @@ local function load_lua_modules(subdir)
 end
 
 load_lua_modules("core")
+require("lsp-init")   -- lsp
 require("lazy-init")  -- 插件
--- load_lua_modules("lsp")
--- load_lua_modules("dap")
 
+vim.filetype.add({
+  extension = {
+    hpp = "cpp",
+    h = "c",
+  },
+})
