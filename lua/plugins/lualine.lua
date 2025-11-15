@@ -114,7 +114,7 @@ return {
               if vim.v.shell_error == 0 and git_root then
                 -- 有仓库：当前文件目录 相对于 git 根
                 local rel = file_dir:gsub('^' .. vim.pesc(git_root) .. '/', '')
-                return rel
+                return rel == git_root and "./" or "./" .. rel
               else
                 -- 无仓库：直接缩写成 ~
                 return vim.fn.fnamemodify(file_dir, ":~:.")
@@ -157,7 +157,7 @@ return {
                 vue        = '',
                 dockerfile = '',
               };
-              
+
               local name = vim.fn.expand('%:t')          -- 完整文件名
               if name == "" then return "" end           -- 空缓冲区
 
@@ -177,14 +177,14 @@ return {
         lualine_c = {
           {
             'diagnostics',
-            sources = { 'nvim_lsp' },
+            sources = { "nvim_diagnostic" },
             sections = { 'error', 'warn', 'info', 'hint' },
             symbols = { error = ' ', warn = ' ', info = ' ', hint = ' '},
             diagnostics_color = {
-              error = { fg = "#e78284", bg = none },
-              warn  = { fg = "#e5c890", bg = none },
-              info  = { fg = "#79bdb3", bg = none },
-              hint  = { fg = "#9cc480", bg = none },
+              error = { fg = "#e78284" },
+              warn  = { fg = "#e5c890" },
+              info  = { fg = "#79bdb3" },
+              hint  = { fg = "#9cc480" },
             },
             update_in_insert = true,
             always_visible = true,
@@ -227,11 +227,11 @@ return {
               local col   = vim.fn.col('.')
               local total = vim.fn.line('$')
               local pct   = total == 0 and 0 or math.floor(cur * 100 / total)
-            
+
               -- 一次性返回整条字符串
               return string.format('%s %d%%%% %d:%d', "󰮯", pct, cur, col)
             end,
-            
+
             -- 颜色随进度一起变
             color = { bg = "#323647", fg = "#8f9ac2", gui = 'bold' },
             separator = { left = '', right = '' },
