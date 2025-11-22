@@ -8,7 +8,7 @@ return {
     {
       mode = "n",
       "<leader>tf",
-      "<cmd>Telescope file_browser path=" 
+      "<cmd>Telescope file_browser path="
         .. (vim.fn.systemlist('git rev-parse --show-toplevel')[1] or vim.loop.cwd())
         .. " select_buffer=true<cr>",
       desc = "open telescpe file browser in git root path"
@@ -18,8 +18,9 @@ return {
       "<leader>t<s-f>",
       function()
         -- 当前文件所在目录，无名文件则回退到 cwd
+        ---@type string?
         local dir = vim.fn.expand('%:p:h')
-        if dir == '' then dir = vim.loop.cwd() end
+        if dir == '' then dir = (vim.uv or vim.loop).cwd() end
         require('telescope').extensions.file_browser.file_browser({
           path = dir,
           select_buffer = true,

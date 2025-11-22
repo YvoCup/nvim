@@ -18,7 +18,19 @@ return {
             ["<C-q>"] = require("telescope.actions").close,
           },
           n = {
-            ["q"] = require("telescope.actions").close, 
+            ["q"] = require("telescope.actions").close,
+            ["<S-j>"] = function(prompt_bufnr)
+              local action = require "telescope.actions"
+              for _ = 1, 5 do
+                action.move_selection_next(prompt_bufnr)
+              end
+            end,
+            ["<S-k>"] = function(prompt_bufnr)
+              local action = require "telescope.actions"
+              for _ = 1, 5 do
+                action.move_selection_previous(prompt_bufnr)
+              end
+            end,
           },
         },
         -- 主题，这个主题是输入框在左上角，预览在右侧的那种
@@ -47,7 +59,31 @@ return {
   end,
   ----------------------------------------------------- keys -----------------------------------------------------------
   keys = {
-    { "<leader>ts", "<cmd>Telescope find_files<cr>", mode = "n", desc = "telescope find files" },
+    -- search
+    {
+      mode = "n",
+      "<leader>ts",
+      function()
+        ---@type string?
+        local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+        if vim.v.shell_error ~= 0 then
+          git_root = vim.loop.cwd()
+        end
+        require("telescope.builtin").find_files({ cwd = git_root })
+      end,
+      desc = "telescope find files at root git"
+    },
+    {
+      mode = "n",
+      "<leader>t<s-s>",
+      function()
+        ---@type string?
+        local dir = vim.fn.expand('%:p:h')
+        if dir == '' then dir = (vim.uv or vim.loop).cwd() end
+        require("telescope.builtin").find_files({ cwd = dir })
+      end,
+      desc = "telescope find files"
+    },
     { "<leader>tg", "<cmd>Telescope live_grep<cr>",  mode = "n", desc = "telescope live grep" },
     { "<leader>tb", "<cmd>Telescope buffers<cr>",    mode = "n", desc = "telescope buffers" },
     { "<leader>tn", "<cmd>Telescope help_tags<cr>",  mode = "n", desc = "telescope help tags" },
