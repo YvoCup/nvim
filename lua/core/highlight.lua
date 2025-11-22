@@ -172,9 +172,9 @@ local color = {
 -- 快速构建函数
 -- 前景，背景，gui 设置这样的顺序
 local function hi(group, opts)
-  local gui = opts.gui and " gui=" .. opts.gui or ""
+  local gui = opts.gui and "gui=" .. opts.gui or ""
   vim.cmd(string.format(
-    "highlight %s guifg=%s guibg=%s%s",
+    "highlight %s guifg=%s guibg=%s %s",
     group,
     opts.fg or "none",
     opts.bg or "none",
@@ -193,6 +193,11 @@ hi("WinBarNC",           {})
 hi("FloatShadow",        {})
 hi("FloatShadowThrough", {})
 hi("Pmenu",              {})
+
+-- treesitter
+hi("@variable",    { fg = "#9aacd0" })
+hi("@operator",    { fg = "#ff7cbe" })
+hi("@punctuation", { fg = "#9aacd0" })
 
 -- 行号与光标
 hi("CursorLineNr", { fg = color.blue_400 })
