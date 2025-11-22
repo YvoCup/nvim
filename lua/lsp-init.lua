@@ -17,3 +17,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf })
   end
 })
+

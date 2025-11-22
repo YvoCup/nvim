@@ -9,6 +9,7 @@ return {
       workspace = {
         library = { vim.env.VIMRUNTIME },
         checkThirdParty = false,
+        diagnostics = { disableWorkspaceDiagnostics = true }
       },
     },
   },
