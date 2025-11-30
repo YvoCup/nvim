@@ -14,8 +14,6 @@ vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection",    { bg = "#4c5267" })
 -- vim.api.nvim_set_hl(0, "BlinkCmpKind",  { fg = "#923456" })
 -- vim.api.nvim_set_hl(0, "BlinkCmpKindFunction",  { fg = "#723456" })
 
-
-
 return {
   "saghen/blink.cmp",
   -- dependencies = { "archie-judd/blink-cmp-words" },
@@ -31,22 +29,17 @@ return {
           range = "full",  -- 控制光标的检查范围，此处会检查前后所有的信息生成
         },
         menu = {
-          min_width = 30,
-          max_height = 20,
           border = "rounded",  -- 圆框
           draw = {
             -- treesitter = {  },
-            scrollbar = false,  -- 删除滚动条
+            -- scrollbar = false,  -- 删除滚动条
             columns = {
               -- { "label", "label_description", gap = 1 },
               -- { "kind_icon", gap = 1 },
               -- { "source_name", gap = 1 , width = { fill = true }},
-              { "kind_icon" }, { "label", gap = 1 }, { "source_name", gap = 1 , width = { fill = true }}
+              { "kind_icon" }, { "label", gap = 1 }
             },
             components = {
-              source_name = {
-                width = { fill = true, max = 4 }
-              },
               label = {
                 width = { fill = true, max = 60 },
                 -- 这个给予了文本的一些补充
@@ -60,6 +53,21 @@ return {
                   end
                 end,
                 highlight = function(ctx)
+                  local highlights = {}
+                  local highlights_info = require("colorful-menu").blink_highlights(ctx)
+                  if highlights_info ~= nil then
+                    highlights = highlights_info.highlights
+                  end
+                  for _, idx in ipairs(ctx.label_matched_indices) do
+                    table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
+                  end
+                  -- Do something else
+                  return highlights
+                end,
+              },
+              kind_icon = {
+                width = { fill = true, max = 60 },
+                  highlight = function(ctx)
                   local highlights = {}
                   local highlights_info = require("colorful-menu").blink_highlights(ctx)
                   if highlights_info ~= nil then

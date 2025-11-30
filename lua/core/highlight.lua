@@ -198,6 +198,8 @@ hi("Pmenu",              {})
 hi("@variable",    { fg = "#9aacd0" })
 hi("@operator",    { fg = "#ff7cbe" })
 hi("@punctuation", { fg = "#9aacd0" })
+hi("EndOfBuffer",  { fg = "#9aacd0" })
+hi("NonText",      { fg = "#6e7daf" })
 
 -- 行号与光标
 hi("CursorLineNr", { fg = color.blue_400 })

@@ -42,6 +42,10 @@ vim.o.fillchars = "vert:│,horiz:─,eob: "
 -- 禁用 foldcolumn
 vim.opt.foldcolumn = '0'
 
+-- 禁止自动居中
+vim.opt.scrolloff = 0
+vim.opt.sidescrolloff = 0
+
 -- 设置默认 tab 为两个空格
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
