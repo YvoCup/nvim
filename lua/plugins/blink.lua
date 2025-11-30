@@ -3,8 +3,9 @@
 
 ----------------------------------------------------- highlight --------------------------------------------------------
 -- vim.api.nvim_set_hl(0, "BlinkCmpMenu",  { fg = "#527a89" })
-vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder",       { bg = "#323647", fg = "#656c87" })
-vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection",    { bg = "#4c5267" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder",          { bg = "#323647", fg = "#656c87" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection",       { bg = "#4c5267" })
+vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { bg = "#323647", fg = "#656c87" })
 
 return {
   "saghen/blink.cmp",
