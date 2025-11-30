@@ -1,3 +1,4 @@
+vim.g.lsp_diagnostic_on_open = true
 local function load_lua_modules(subdir)
   -- 拼接完整路径：~/.config/nvim/lua/<subdir>
   local path = vim.fn.stdpath('config') .. '/lua/' .. subdir
@@ -22,3 +23,4 @@ vim.filetype.add({
     h = "c",
   },
 })
+
