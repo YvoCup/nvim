@@ -17,13 +17,26 @@ return {
         buffer_visible  = { fg = "#8f9ac2", },
         buffer_selected = { fg = "#c8d4f6", },
         -- number 的高亮
-        numbers = { fg = "#8f9ac2" },
+        numbers          = { fg = "#8f9ac2" },
         numbers_visible  = { fg = "#8f9ac2" },
         numbers_selected = { fg = "#c8d4f6" },
         -- 修改图标的高亮
-        modified = { fg = "#e78284" },
+        modified          = { fg = "#e78284" },
         modified_visible  = { fg = "#e78284" },
         modified_selected = { fg = "#e78284" },
+        -- lsp: 涵盖四种类别的颜色
+        error_selected   = { fg = "#e78284", bold = true, italic = true, },
+        error_visible    = { fg = "#e78284", },
+        error            = { fg = "#e78284", },
+        warning_selected = { fg = "#e5c890", bold = true, italic = true, },
+        warning_visible  = { fg = "#e5c890", },
+        warning          = { fg = "#e5c890", },
+        info_selected    = { fg = "#79bdb3", bold = true, italic = true, },
+        info_visible     = { fg = "#79bdb3", },
+        info             = { fg = "#79bdb3", },
+        hint_selected    = { fg = "#9cc480", bold = true, italic = true, },
+        hint_visible     = { fg = "#9cc480", },
+        hint             = { fg = "#9cc480", },
       },
       options = {
         -- 过滤一些 buffer
@@ -64,21 +77,25 @@ return {
         end,
         -- 前面的数字展示，并没有给出 buffer id
         numbers = function(opts)
-          return string.format('%s', opts.raise(opts.ordinal))
+          return string.format('%s', opts.ordinal)
         end,
-        -- 左右都是没有任何分隔符的
-        separator_style = { '', '' },
-        indicator = {
-          icon = "",
-          style = "none"
-        },
+
+        max_name_length   = 18,    -- 文本长度
+        max_prefix_length = 15,    -- 重复文本长度
+        tab_size          = 12,
+        truncate_names    = true,
+        diagnostics = "nvim_lsp",  -- lsp
+        separator_style = { '', '' },  -- 左右都是没有任何分隔符的
+        indicator       = { icon = "", style = "none", },
+
         -- 关闭关闭按钮
-        show_close_icon = false,
+        show_close_icon         = false,
         show_buffer_close_icons = false,
-        show_tab_close = false,
+        show_tab_close          = false,
+
         -- 一些 icon
-        modified_icon = "󰳼 ",      -- 这个是文件发生修改时的标识
-        left_trunc_marker = "..",  -- 这个是左右两侧，数量过多的时候的标识
+        modified_icon      = "󰳼 ",      -- 这个是文件发生修改时的标识
+        left_trunc_marker  = "..",  -- 这个是左右两侧，数量过多的时候的标识
         right_trunc_marker = "..",
       },
     })
