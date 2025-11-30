@@ -31,7 +31,7 @@ vim.api.nvim_set_hl(0, "LazyH1", { bg = "#909bb8", fg = "#d2e0fd", bold = true }
 vim.api.nvim_set_hl(0, "LazyH2", { fg = "#d2e0fd", bold = true })  -- 主要是 total 之类的
 -- 按钮部分，按钮的高亮和 H1 一致
 vim.api.nvim_set_hl(0, "LazyButtonActive", { bg = "#909bb8", fg = "#d2e0fd", bold = true })
-vim.api.nvim_set_hl(0, "LazyButton",       { bg = none,      fg = "#777e9e" })
+vim.api.nvim_set_hl(0, "LazyButton",       { fg = "#777e9e" })
 -- 内容
 vim.api.nvim_set_hl(0, "LazyProp",       { fg = "#5f73aa" })  -- 信息中前面部分，一般是 dir 之类的
 vim.api.nvim_set_hl(0, "LazyDimmed",     { fg = "#b5bfe2" })  -- 信息中内容，一般在 git 中展示

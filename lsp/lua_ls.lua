@@ -3,6 +3,9 @@ return {
   filetypes = { "lua" },
   settings = {
     Lua = {
+      codeLens    = { enable = true },
+      hint        = { enable = true, semicolon = 'Disable' },
+      telemetry   = { enable = false },
       diagnostics = {
         globals = { "vim" },   -- 忽略全局 vim 未定义
       },
