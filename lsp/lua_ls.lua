@@ -3,6 +3,11 @@ return {
   filetypes = { "lua" },
   settings = {
     Lua = {
+      hover = {
+        enumsLimit = 100,
+        previewFields = 100,
+        border = "rounded"
+      },
       codeLens    = { enable = true },
       hint        = { enable = true, semicolon = 'Disable' },
       telemetry   = { enable = false },

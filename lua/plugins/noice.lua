@@ -15,6 +15,12 @@ return {
   ---------------------------------------------------- config ----------------------------------------------------------
   config = function()
     require("noice").setup({
+      lsp = {
+        signature = { enabled = false, },
+        hover     = { enabled = false, },
+        progress  = { enabled = false },
+        message   = { view = "notify", },
+      },
       -- 消息栏的显示问题
       routes = {
         -- 不显示搜索下的 [1/15] 之类的信息

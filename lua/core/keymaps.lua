@@ -17,6 +17,7 @@ keymap.set("n", "I", "<Nop>")
 keymap.set("n", "G", "<Nop>")
 keymap.set("n", "^", "<Nop>")
 keymap.set("n", "$", "<Nop>")
+keymap.set('n', 'K', "<Nop>")
 -- 用 no-op 把 `[` 和 `]` 本身映射成空操作
 -- 这样任何带前缀的 [[ ]](){} 等全失效
 vim.keymap.set({"n","x","o"}, "[", "<Nop>", { noremap = true })

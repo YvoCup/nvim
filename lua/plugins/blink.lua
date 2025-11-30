@@ -5,14 +5,6 @@
 -- vim.api.nvim_set_hl(0, "BlinkCmpMenu",  { fg = "#527a89" })
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder",       { bg = "#323647", fg = "#656c87" })
 vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection",    { bg = "#4c5267" })
--- vim.api.nvim_set_hl(0, "BlinkCmpLabel",  { fg = "#7a809b" })
--- vim.api.nvim_set_hl(0, "BlinkCmpLabelDeprecated",  { fg = "#7a809b", underline = true, italic = true })
--- vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch",  { fg = "#80a2ec" })
---
--- vim.api.nvim_set_hl(0, "BlinkCmpLabelDetail",  { fg = "#123456" })
--- vim.api.nvim_set_hl(0, "BlinkCmpLabelDescription",  { fg = "#523456" })
--- vim.api.nvim_set_hl(0, "BlinkCmpKind",  { fg = "#923456" })
--- vim.api.nvim_set_hl(0, "BlinkCmpKindFunction",  { fg = "#723456" })
 
 return {
   "saghen/blink.cmp",
@@ -25,11 +17,16 @@ return {
       cmdline = { enabled = false },
       completion = {
         ghost_text = { enabled = false },
-        keyword = {
-          range = "full",  -- 控制光标的检查范围，此处会检查前后所有的信息生成
+        keyword = { range = "prefix", },  -- 仅前缀匹配
+        documentation = {
+          window = {
+            border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+            scrollbar = false,
+          },
         },
         menu = {
           border = "rounded",  -- 圆框
+          scrollbar = false,
           draw = {
             -- treesitter = {  },
             -- scrollbar = false,  -- 删除滚动条
@@ -84,6 +81,12 @@ return {
           },
         },
       },
+      signature = {
+        enabled = true,
+        window = {
+          border = "rounded",
+        },
+      },
       sources = {
         -- 会显示的补全来源
         default = { 'snippets', 'lsp', 'path' },
@@ -93,13 +96,14 @@ return {
       },
       ------------------------------------------------- keys -----------------------------------------------------------
       keymap = {
-        preset = 'default',
+        preset      = 'default',
         -- 弹窗里 Tab 选下一条，没弹窗时 fallback 到原 Tab
-        ['<Tab>'] = { 'select_next', 'fallback' },
+        ['<Tab>']   = { 'select_next', 'fallback' },
         -- Shift-Tab 选上一条
         ['<S-Tab>'] = { 'select_prev', 'fallback' },
         -- 回车确认补全
-        ['<CR>'] = { 'accept', 'fallback' },
+        ['<CR>']    = { 'accept', 'fallback' },
+        ['gh'] = { 'show_signature', 'hide_signature', 'fallback' },
       },
     })
   end,

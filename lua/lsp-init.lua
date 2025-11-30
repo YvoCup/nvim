@@ -1,7 +1,12 @@
-vim.lsp.enable("luau_lsp")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("clangd")
 vim.lsp.enable("neocmake")
+
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#656c87", bg = "none" })
+vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = '#e78284', bold = true })
+vim.api.nvim_set_hl(0, 'DiagnosticWarn',  { fg = '#e5c890', bold = true })
+vim.api.nvim_set_hl(0, 'DiagnosticInfo',  { fg = '#79bdb3', bold = true })
+vim.api.nvim_set_hl(0, 'DiagnosticHint',  { fg = '#9cc480', bold = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("SetupLSP", {}),
@@ -9,12 +14,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- 获取客户端
     local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-    -- [inlay hint]
-    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-      vim.keymap.set('n', 'gl', function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-      end, { buffer = event.buf, desc = 'LSP: Toggle Inlay Hints' })
-    end
+    -- client.server_capabilities.hoverProvider = nil
+    -- client.server_capabilities.signatureHelpProvider = nil
 
     -- [folding]
     if client and client:supports_method 'textDocument/foldingRange' then
@@ -23,21 +24,32 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     -- 启用虚拟文本，也就是报错之后在每一行末尾展现的东西
-    vim.diagnostic.config {
+    vim.diagnostic.config({
       virtual_text = true,
       float = {
         source = true,
         border = "rounded",
-        title  = nil,
+        header = nil,
       },
-    }
+    })
 
     -- keymaps
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = event.buf })
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf })
+
     vim.keymap.set('n', "ga", function()
       vim.diagnostic.open_float()
     end, { buffer = event.buf, desc = 'LSP: Show Diagnostic' })
+
+    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then  -- [inlay hint]
+      vim.keymap.set('n', 'gl', function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+      end, { buffer = event.buf, desc = 'LSP: Toggle Inlay Hints' })
+    end
+
+    vim.keymap.set("n", "gh", function ()
+      vim.lsp.buf.hover({ border = "rounded" })
+    end, { buffer = event.buf, desc = 'LSP: vim.lsp.buf.hover' })
   end
 })
 
