@@ -104,7 +104,7 @@ return {
         ['<S-Tab>'] = { 'select_prev', 'fallback' },
         -- 回车确认补全
         ['<CR>']    = { 'accept', 'fallback' },
-        ['gh'] = { 'show_signature', 'hide_signature', 'fallback' },
+        ['<c-h>'] = { 'show_signature', 'hide_signature', 'fallback' },
       },
     })
   end,

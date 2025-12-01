@@ -27,6 +27,6 @@ return {
   end,
   ------------------------------------------------------ keys ----------------------------------------------------------
   keys = {
-    { mode = "n", "<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    { mode = "n", "gl", "<cmd>LazyGit<cr>", desc = "LazyGit" }
   },
 }
