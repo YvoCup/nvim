@@ -1,6 +1,19 @@
 -- FILE: lua/plugins/telescope.lua
 -- INFO: telescope 是非常优秀的浮动窗口显示功能代码
 
+-- 当前项目 Git 根目录；若不在仓库则退到 buffer 所在目录
+local function git_root_or_buf_dir()
+  local dir = vim.fn.expand('%:p:h')
+  if dir == '' then dir = (vim.uv or vim.loop).cwd() end   -- 没打开文件时退到 cwd
+
+  local git_root = vim.fn.systemlist('git -C ' .. vim.fn.shellescape(dir) .. ' rev-parse --show-toplevel')[1]
+  if vim.v.shell_error == 0 and git_root ~= '' then
+    return git_root
+  else
+    return dir
+  end
+end
+
 return {
   "nvim-telescope/telescope.nvim",
   lazy = true,
@@ -57,36 +70,25 @@ return {
     })
     require("telescope").load_extension("file_browser")
   end,
-  ----------------------------------------------------- keys -----------------------------------------------------------
   keys = {
-    -- search
     {
       mode = "n",
-      "<leader>ts",
+      "tt",
       function()
-        ---@type string?
-        local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-        if vim.v.shell_error ~= 0 then
-          git_root = vim.loop.cwd()
-        end
-        require("telescope.builtin").find_files({ cwd = git_root })
+        require("telescope.builtin").find_files({ cwd = git_root_or_buf_dir() })
       end,
-      desc = "telescope find files at root git"
+      desc = "telescope find files at pwd"
     },
     {
       mode = "n",
-      "<leader>t<s-s>",
+      "tg",
       function()
-        ---@type string?
-        local dir = vim.fn.expand('%:p:h')
-        if dir == '' then dir = (vim.uv or vim.loop).cwd() end
-        require("telescope.builtin").find_files({ cwd = dir })
+        require("telescope.builtin").find_files({ cwd = git_root_or_buf_dir() })
       end,
-      desc = "telescope find files"
+      desc = "telescope find files at git root"
     },
-    { "<leader>tg", "<cmd>Telescope live_grep<cr>",  mode = "n", desc = "telescope live grep" },
-    { "<leader>tb", "<cmd>Telescope buffers<cr>",    mode = "n", desc = "telescope buffers" },
-    { "<leader>tn", "<cmd>Telescope help_tags<cr>",  mode = "n", desc = "telescope help tags" },
+    { "t<s-b>", "<cmd>Telescope buffers<cr>",    mode = "n", desc = "telescope buffers" },
+    { "tn", "<cmd>Telescope help_tags<cr>",  mode = "n", desc = "telescope help tags" },
   }
 }
 

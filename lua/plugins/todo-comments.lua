@@ -1,5 +1,15 @@
+-- 当前项目 Git 根目录；若不在仓库则退到 buffer 所在目录
+local function git_root_or_buf_dir()
+  local dir = vim.fn.expand('%:p:h')
+  if dir == '' then dir = (vim.uv or vim.loop).cwd() end   -- 没打开文件时退到 cwd
 
--- TODO: 建议走 nui 的浮动窗口去实现好之后的浮动窗口阅读能力
+  local git_root = vim.fn.systemlist('git -C ' .. vim.fn.shellescape(dir) .. ' rev-parse --show-toplevel')[1]
+  if vim.v.shell_error == 0 and git_root ~= '' then
+    return git_root
+  else
+    return dir
+  end
+end
 
 return {
   "folke/todo-comments.nvim",
@@ -62,7 +72,7 @@ return {
     -- 本文件中快速跳转
     {
       mode = { "n" },
-      "<leader>tj",
+      "tj",
       function()
         require("todo-comments").jump_next({
           keywords = { "TODO", "WARN", "HACK", "OPTM", "PERF", "TEST", "BUGS", "DEAD", "MARK", "INFO" }
@@ -72,7 +82,7 @@ return {
     },
     {
       mode = { "n" },
-      "<leader>tk",
+      "tk",
       function()
         require("todo-comments").jump_prev({
           keywords = { "TODO", "WARN", "HACK", "OPTM", "PERF", "TEST", "BUGS", "DEAD", "MARK", "INFO" }
@@ -80,41 +90,27 @@ return {
       end,
       desc = "previous error/warning todo comment",
     },
-    -- telescope 查阅，不会列出一般信息类选项，全局
+    -- telescope 查阅重点消息，不会列出一般信息类选项，全局
     {
       mode = { "n" },
-      "<leader>tt",
-      "<cmd>TodoTelescope keywords=TODO,WARN,OPTM,PERF,BUGS,DEAD,MARK,INFO<cr>",
+      "tm",
+      "<cmd>TodoTelescope keywords=TODO,WARN,OPTM,PERF,BUGS,DEAD,MARK,INFO cwd=" .. git_root_or_buf_dir() .. "<cr>",
       desc = "toggle todo telescope"
     },
-    -- 列出几个关键的需要快速修复的问题，全局
-    { 
-      mode = { "n" },
-      "<leader>tq",
-      "<cmd>TodoQuickFix keywords=TODO,BUGS,OPTM,PERF<cr>",
-      desc = "toggle todo Quickfix"
-    },
-    -- 除了一般信息类选项之外都会列举出来，相当于 buffer 形式的 telescope
-    {
-      mode = { "n" },
-      "<leader>tl",
-      "<cmd>TodoLocList keywords=TODO,WARN,OPTM,BUGS,DEAD,MARK,INFO<cr>",
-      desc = "toggle todo Local list"
-    },
-    {
-      mode = { "n" },
-      "<leader>th",
-      function()
-        local cur_file = vim.fn.expand('%:p')
-        vim.cmd("TodoLocList cwd=" .. cur_file .. " keywords=TODO,WARN,OPTM,BUGS,DEAD,MARK,INFO")
-      end,
-      desc = "toggle todo local list in this file"
-    },
+    -- -- 仅仅检查当前文件中的情况
+    -- {
+    --   mode = { "n" },
+    --   "t<s-m>",
+    --   "<cmd>TodoTelescope keywords=NOTE,INFO,WARN,XXXX,BUGS,TODO,HACK,OPTM,PERF,DEAD,TEST,MARK,PARA,FILE cwd=" ..
+    --   vim.fn.expand('%:p') ..
+    --   "<cr>",
+    --   desc = "toggle todo Quickfix"
+    -- },
     -- 专门针对 MRAK 做一层标记查阅
     {
       mode = { "n" },
-      "<leader>tm",
-      "<cmd>TodoLocList keywords=MARK<cr>",
+      "t<c-m>",
+      "<cmd>TodoTelescope keywords=MARK cwd=" .. git_root_or_buf_dir() .. "<cr>",
       desc = "toggle mark lists"
     },
   },

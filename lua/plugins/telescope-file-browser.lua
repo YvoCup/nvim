@@ -7,7 +7,7 @@ return {
   keys = {
     {
       mode = "n",
-      "<leader>tf",
+      "tf",
       "<cmd>Telescope file_browser path="
         .. (vim.fn.systemlist('git rev-parse --show-toplevel')[1] or vim.loop.cwd())
         .. " select_buffer=true<cr>",
@@ -15,7 +15,7 @@ return {
     },
     {
       mode = "n",
-      "<leader>t<s-f>",
+      "tb",
       function()
         -- 当前文件所在目录，无名文件则回退到 cwd
         ---@type string?
@@ -30,7 +30,7 @@ return {
     },
     {
       mode = "n",
-      "<leader>t<c-f>",
+      "td",
       "<cmd>Telescope file_browser<cr>",
       desc = "opne telescope file browser in cwd"
     },
