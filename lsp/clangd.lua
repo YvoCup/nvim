@@ -1,5 +1,5 @@
 return {
-  cmd = { 'clangd' },
+  cmd = { 'clangd', '--log=error', },
   filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "h", "hpp" },
   root_markers = {
     '.clangd',

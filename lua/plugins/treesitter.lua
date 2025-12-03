@@ -12,11 +12,18 @@ return {
       -- 确保安装的 treesitter 头目
       ensure_installed = {
         "lua",
+
         "python",
+
         "cpp",
         "c",
+
         "typescript",
         "javascript",
+        "html",
+        "css",
+        "vue",
+
         "json",
       },
 

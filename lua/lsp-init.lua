@@ -1,6 +1,10 @@
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("clangd")
 vim.lsp.enable("neocmake")
+vim.lsp.enable("vue_ls")
+vim.lsp.enable("ts_ls")
+vim.lsp.enable("cssls")
+vim.lsp.enable("html")
 
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#656c87", bg = "none" })
 vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = '#e78284', bold = true })

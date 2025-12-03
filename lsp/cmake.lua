@@ -6,3 +6,4 @@ return {
     buildDirectory = 'build',
   },
 }
+

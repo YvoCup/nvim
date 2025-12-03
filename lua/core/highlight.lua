@@ -195,11 +195,13 @@ hi("FloatShadowThrough", {})
 hi("Pmenu",              {})
 
 -- treesitter
-hi("@variable",    { fg = "#9aacd0" })
-hi("@operator",    { fg = "#ff7cbe" })
-hi("@punctuation", { fg = "#9aacd0" })
-hi("EndOfBuffer",  { fg = "#9aacd0" })
-hi("NonText",      { fg = "#6e7daf" })
+hi("@variable",          { fg = "#9aacd0" })
+hi("@operator",          { fg = "#ff7cbe" })
+hi("@punctuation",       { fg = "#9aacd0" })
+hi("@tag",               { fg = "#d9be88", gui = "italic,bold" })
+hi("@tag.attribute.vue", { fg = "#80a2ec", gui = "bold" })
+hi("EndOfBuffer",        { fg = "#9aacd0" })
+hi("NonText",            { fg = "#6e7daf" })
 
 -- 行号与光标
 hi("CursorLineNr", { fg = color.blue_400 })
