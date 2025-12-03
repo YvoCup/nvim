@@ -82,7 +82,9 @@ return {
     {
       mode = "n",
       "tg",
-      require('telescope.builtin').live_grep,
+      function ()
+        require('telescope.builtin').live_grep({ cwd = git_root_or_buf_dir() })
+      end,
       desc = "telescope find files at git root"
     },
     { "t<s-b>", "<cmd>Telescope buffers<cr>",    mode = "n", desc = "telescope buffers" },
