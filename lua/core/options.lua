@@ -54,6 +54,7 @@ vim.o.expandtab = true
 -- 想加新类型直接往表里写一行即可，只对必须非两个的进行书写
 local ft_indent = {
   python = 4,
+  rust   = 2,
 }
 for ft, width in pairs(ft_indent) do
   vim.api.nvim_create_autocmd("FileType", {

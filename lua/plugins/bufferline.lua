@@ -51,16 +51,17 @@ return {
           local file_name = vim.fn.bufname(buf_number)
           -- 自定义名单，之后再往这儿写不喜欢的就好了
           local type_filter_map = {
-            ['qf']          = false,   -- quickfix
-            ['help']        = false,
-            ['dashboard']   = false,
-            ['alpha']       = false,
-            ['toggleterm']  = false,
+            ['qf']              = false,   -- quickfix
+            ['help']            = false,
+            ['dashboard']       = false,
+            ['alpha']           = false,
+            ['toggleterm']      = false,
             ['TelescopePrompt'] = false,
+            ["checkhealth"]     = false,
           }
           local name_filter_map = {
-            ['NvimTree']   = false,
-            ['neo%-tree']  = false,
+            ['NvimTree']        = false,
+            ['neo%-tree']       = false,
           }
 
           -- buffer type 匹配

@@ -5,6 +5,8 @@ vim.lsp.enable("vue_ls")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("cssls")
 vim.lsp.enable("html")
+vim.lsp.enable("bashls")
+vim.lsp.enable("rust_analyzer")
 
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#656c87", bg = "none" })
 vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = '#e78284', bold = true })
@@ -56,6 +58,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gh", function ()
       vim.lsp.buf.hover({ border = "rounded" })
     end, { buffer = event.buf, desc = 'LSP: vim.lsp.buf.hover' })
+
+    vim.keymap.set("n", "gr", function ()
+      vim.lsp.buf.rename()
+    end, { buffer = event.buf, desc = 'LSP: vim.lsp.buf.rename' })
   end
 })
 

@@ -60,16 +60,26 @@ return {
         initial_mode = "normal",
       },
       extensions = {
-        -- file_browser 这个插件的额外配置
         file_browser = {
           grouped = true,  -- 分组显示文件夹和文件之间的区别
           git_status = false,
-          hidden = { file_browser = true, folder_browser = true },
+          hidden = {  -- 隐藏文件也显示
+            file_browser = true,
+            folder_browser = true
+          },
+        },
+        persisted = {
+          mappings = {
+            ["n"] = {
+              ["y"] = require("telescope").extensions.persisted.copy_session,
+            },
+          }
         },
       },
     })
     require("telescope").load_extension("file_browser")
-  end,
+    require("telescope").load_extension("persisted")
+    end,
   keys = {
     {
       mode = "n",
