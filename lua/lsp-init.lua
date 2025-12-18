@@ -8,6 +8,7 @@ vim.lsp.enable("html")
 vim.lsp.enable("bashls")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("jsonls")
+vim.lsp.enable("yamlls")
 
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#656c87", bg = "none" })
 vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = '#e78284', bold = true })
