@@ -17,7 +17,7 @@ end
 return {
   "nvim-telescope/telescope.nvim",
   lazy = true,
-  ---------------------------------------------------- config ----------------------------------------------------------
+  branch = 'master',
   config = function()
     require("telescope").setup({
       defaults = {
@@ -99,6 +99,61 @@ return {
     },
     { "t<s-b>", "<cmd>Telescope buffers<cr>",    mode = "n", desc = "telescope buffers" },
     { "tn",     "<cmd>Telescope help_tags<cr>",  mode = "n", desc = "telescope help tags" },
+    -- INFO: 此处一切能和 lsp 扯上关系的原生 telescope 方法，由此处实现快捷键。
+    {
+      mode = "n",
+      "gd",
+      require('telescope.builtin').lsp_definitions,
+      desc = "lsp goto definitions"
+    },
+    {
+      mode = "n",
+      "gD",
+      require('telescope.builtin').lsp_type_definitions,
+      desc = "lsp goto type definitions"
+    },
+    {
+      mode = "n",
+      "gp",
+      require('telescope.builtin').lsp_implementations,
+      desc = "implementations"
+    },
+    {
+      mode = "n",
+      "ge",
+      require('telescope.builtin').lsp_references,
+      desc = "references"
+    },
+    {
+      mode = "n",
+      "gu",
+      require('telescope.builtin').lsp_incoming_calls,
+      desc = "references"
+    },
+    {
+      mode = "n",
+      "gU",
+      require('telescope.builtin').lsp_outgoing_calls,
+      desc = "references"
+    },
+    {
+      mode = "n",
+      "go",
+      require('telescope.builtin').lsp_document_symbols,
+      desc = "dynamic workspace symbols"
+    },
+    {
+      mode = "n",
+      "gw",
+      require('telescope.builtin').lsp_dynamic_workspace_symbols,
+      desc = "dynamic workspace symbols"
+    },
+    {
+      mode = "n",
+      "gW",
+      require('telescope.builtin').lsp_workspace_symbols,
+      desc = "dynamic workspace symbols"
+    },
   }
 }
 

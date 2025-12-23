@@ -19,22 +19,24 @@ return {
   config = function()
     require("todo-comments").setup({
       -- HACK: 每个关键字由以下组成
-      --       <name>: 识别的名字
+      --       <name>: 识别的名字 
       --       icon: 图标
       --       color: 颜色，这是背景颜色，前景颜色默认黑色
       --       alt: 别名，注意需要删除一些默认的别名
       --       signs: 是否显示图标
       keywords = {
-        -- NOTE: 不被主要检测的注释，用于一般注意项
+        -- NOTE: 不被检测的注释，用于一般注意项
+        NOTE = { icon = " ", color = "#9cc480", alt = {} },
         -- INFO: 注释的主要信息部分
-        NOTE = { icon = " ", color = "#7f91cd", alt = { "INFO" } },
+        INFO = { icon = " ", color = "#7f91cd", alt = {} },
         -- WARN: 警告部分，警告用法或者写法
         -- XXXX: 别名
         WARN = { icon = " ", color = "#e5c890", alt = { "XXXX" } },
         -- BUGS: 这是一个 bug
         BUGS = { icon = " ", color = "#c1c8e6" },
         -- TODO: 通常用于描述需要完成的工作
-        TODO = { icon = " ", color = "#e78284" },
+        -- ERRO: 别名
+        TODO = { icon = " ", color = "#e78284", alt = { "ERRO" } },
         -- HACK: 这个一般是亮点欣赏，写得好的地方值得高亮
         HACK = { icon = " ", color = "#f3e3ca" },
         -- OPTM: 修复，存在进一步修复的可能的地方
@@ -42,14 +44,18 @@ return {
         PERF = { icon = " ", color = "#9cc480", alt = { "OPTM" } },
         -- DEAD: 这部分已经被抛弃了
         DEAD = { icon = " ", color = "#7b83a0" },
-        -- TEST: 测试阶段，代码不够完善
-        TEST = { icon = "󰂓 ", color = "#8caaee", alt = {} },
+        -- EXAM: 测试阶段，代码不够完善
+        EXAM = { icon = "󰂓 ", color = "#8caaee", alt = {} },
         -- MARK: 标记，当需要寻找的时候快速查找
         MARK = { icon = "󰓹 ", color = "#f4b8e4" },
-        -- PARA: 函数或者别的什么的参数高亮提示
-        PARA = { icon = " ", color = "#dd74dd" },
+        -- PARA: 一切参数
+        -- DEPS: 一切全局依赖
+        -- RETN: 一切返回
+        PARA = { icon = " ", color = "#e599e5" },
+        DEPS = { icon = " ", color = "#dd74dd" },
+        RETN = { icon = " ", color = "#d460d4" },
         -- FILE: 文件名
-        FILE = { icon = " ", color = "#81c8be" },
+        FILE = { icon = " ", color = "#91e0d5" },
       },
       search = {
     command = 'rg',

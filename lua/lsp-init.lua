@@ -42,8 +42,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     })
 
     -- keymaps
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = event.buf })
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf })
     vim.keymap.set("n", "gj", function() vim.diagnostic.jump({count = 1})  end, { buffer = event.buf })
     vim.keymap.set("n", "gk", function() vim.diagnostic.jump({count = -1}) end, { buffer = event.buf })
 
