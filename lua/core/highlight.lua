@@ -169,8 +169,8 @@ local color = {
   frontground_950 = "#7a94c2",
 }
 
--- 快速构建函数
--- 前景，背景，gui 设置这样的顺序
+-- NOTE: 快速构建函数
+--       前景，背景，gui 设置这样的顺序
 local function hi(group, opts)
   local gui = opts.gui and "gui=" .. opts.gui or ""
   vim.cmd(string.format(
@@ -211,22 +211,23 @@ hi("LineNr",       { fg = color.gray_500 })
 -- 语法高亮
 hi("Comment",    { fg = color.cyan_300,   gui = "italic" })       -- 注释
 hi("Keyword",    { fg = color.yellow_500, gui = "italic,bold" })  -- 关键字
-hi("Constant",   { fg = color.pink_300 }) -- 常量
-hi("Function",   { fg = color.blue_400 })    -- 函数名
-hi("Identifier", { fg = color.blue_600 })    -- 变量名
+hi("Constant",   { fg = color.pink_300 })  -- 常量
+hi("Function",   { fg = color.blue_400 })  -- 函数名
+hi("Identifier", { fg = color.blue_600 })  -- 变量名
 hi("Type",       { fg = color.red_400,    gui = "bold" })         -- 类型
 hi("Statement",  { fg = color.yellow_300, gui = "italic,bold" })  -- 状态，例如 case 等
-hi("Special",    { fg = color.pink_400 }) -- 特殊符号，如 {} 等
-hi("Character",  { fg = color.green_300 })   -- 字符，如 "a" 等
-hi("Structure",  { fg = color.red_600 })   -- 结构
-hi("Macro",      { fg = color.green_400 }) -- 预处理等
-hi("Title",      { fg = color.red_400 })   -- 标题
-hi("Directory",  { fg = color.blue_400 })  -- 与文档相关操作
+hi("Special",    { fg = color.pink_400 })   -- 特殊符号，如 {} 等
+hi("Character",  { fg = "#a6d189" })  -- 字符，如 "a" 等
+hi("Structure",  { fg = color.red_600 })    -- 结构
+hi("Macro",      { fg = color.green_400 })  -- 预处理等
+hi("Title",      { fg = color.red_400 })    -- 标题
+hi("Directory",  { fg = color.blue_400 })   -- 与文档相关操作
 
 -- 搜索与匹配
-hi("Search",    { bg = color.wightNormal_500, gui = "bold" })
-hi("CurSearch", { bg = color.wightNormal_500, gui = "bold" })
-hi("Visual",    { bg = color.blackNormal_600, gui = "bold" })
+hi("Search",     { bg = "#5e77be", gui = "bold" })
+hi("CurSearch",  { bg = "#5e77be", gui = "bold" })
+hi("Visual",     { bg = "#656c87", gui = "bold" })
+hi("MatchParen", { bg = "#51576d", gui = "bold" })
 
 -- hi("Added",      { fg = color.green })
 -- hi("Changed",    { fg = color.yellow })

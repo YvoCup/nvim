@@ -9,21 +9,19 @@ vim.lsp.enable("bashls")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("yamlls")
+vim.lsp.enable("eslint")
 
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#656c87", bg = "none" })
 vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = '#e78284', bold = true })
-vim.api.nvim_set_hl(0, 'DiagnosticWarn',  { fg = '#e5c890', bold = true })
-vim.api.nvim_set_hl(0, 'DiagnosticInfo',  { fg = '#79bdb3', bold = true })
-vim.api.nvim_set_hl(0, 'DiagnosticHint',  { fg = '#9cc480', bold = true })
+vim.api.nvim_set_hl(0, 'DiagnosticWarn', { fg = '#e5c890', bold = true })
+vim.api.nvim_set_hl(0, 'DiagnosticInfo', { fg = '#79bdb3', bold = true })
+vim.api.nvim_set_hl(0, 'DiagnosticHint', { fg = '#9cc480', bold = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("SetupLSP", {}),
   callback = function(event)
     -- 获取客户端
     local client = vim.lsp.get_client_by_id(event.data.client_id)
-
-    -- client.server_capabilities.hoverProvider = nil
-    -- client.server_capabilities.signatureHelpProvider = nil
 
     -- [folding]
     if client and client:supports_method 'textDocument/foldingRange' then
@@ -42,26 +40,36 @@ vim.api.nvim_create_autocmd("LspAttach", {
     })
 
     -- keymaps
-    vim.keymap.set("n", "gj", function() vim.diagnostic.jump({count = 1})  end, { buffer = event.buf })
-    vim.keymap.set("n", "gk", function() vim.diagnostic.jump({count = -1}) end, { buffer = event.buf })
+    vim.keymap.set("n", "gj", function() vim.diagnostic.jump({ count = 1 }) end, { buffer = event.buf })
+    vim.keymap.set("n", "gk", function() vim.diagnostic.jump({ count = -1 }) end, { buffer = event.buf })
 
     vim.keymap.set('n', "ga", function()
       vim.diagnostic.open_float()
     end, { buffer = event.buf, desc = 'LSP: Show Diagnostic' })
 
-    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then  -- [inlay hint]
+    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then -- [inlay hint]
       vim.keymap.set('n', 'gi', function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
       end, { buffer = event.buf, desc = 'LSP: Toggle Inlay Hints' })
     end
 
-    vim.keymap.set("n", "gh", function ()
+    vim.keymap.set("n", "gh", function()
       vim.lsp.buf.hover({ border = "rounded" })
     end, { buffer = event.buf, desc = 'LSP: vim.lsp.buf.hover' })
 
-    vim.keymap.set("n", "gr", function ()
+    vim.keymap.set("n", "gr", function()
       vim.lsp.buf.rename()
     end, { buffer = event.buf, desc = 'LSP: vim.lsp.buf.rename' })
   end
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function()
+    local mode = vim.api.nvim_get_mode().mode
+    local filetype = vim.bo.filetype
+    if vim.bo.modified == true and mode == 'n' and filetype ~= "oil" then
+      vim.cmd('lua vim.lsp.buf.format()')
+    else
+    end
+  end
+})

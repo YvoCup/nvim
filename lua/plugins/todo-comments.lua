@@ -1,7 +1,7 @@
 -- 当前项目 Git 根目录；若不在仓库则退到 buffer 所在目录
 local function git_root_or_buf_dir()
   local dir = vim.fn.expand('%:p:h')
-  if dir == '' then dir = (vim.uv or vim.loop).cwd() end   -- 没打开文件时退到 cwd
+  if dir == '' then dir = (vim.uv or vim.loop).cwd() end -- 没打开文件时退到 cwd
 
   local git_root = vim.fn.systemlist('git -C ' .. vim.fn.shellescape(dir) .. ' rev-parse --show-toplevel')[1]
   if vim.v.shell_error == 0 and git_root ~= '' then
@@ -19,7 +19,7 @@ return {
   config = function()
     require("todo-comments").setup({
       -- HACK: 每个关键字由以下组成
-      --       <name>: 识别的名字 
+      --       <name>: 识别的名字
       --       icon: 图标
       --       color: 颜色，这是背景颜色，前景颜色默认黑色
       --       alt: 别名，注意需要删除一些默认的别名
@@ -58,22 +58,22 @@ return {
         FILE = { icon = " ", color = "#91e0d5" },
       },
       search = {
-    command = 'rg',
-    args = {
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--hidden',
-      '--glob=!.git',
-    },
-    -- 默认是 quickfix，这里改成 noice
-    pattern = [[\b(KEYWORDS)\b]], -- KEYWORDS 占位符会被插件替换成 TODO|FIXME|WARN
-  },
+        command = 'rg',
+        args = {
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--hidden',
+          '--glob=!.git',
+        },
+        -- 默认是 quickfix，这里改成 noice
+        pattern = [[\b(KEYWORDS)\b]], -- KEYWORDS 占位符会被插件替换成 TODO|FIXME|WARN
+      },
     })
   end,
-  ----------------------------------------------------- keys -----------------------------------------------------------
+  ------------------------------------------------ keys ------------------------------------------------------
   keys = {
     -- 本文件中快速跳转
     {
@@ -100,14 +100,16 @@ return {
     {
       mode = { "n" },
       "tm",
-      "<cmd>TodoTelescope keywords=TODO,WARN,OPTM,PERF,BUGS,DEAD,MARK,INFO cwd=" .. git_root_or_buf_dir() .. "<cr>",
+      "<cmd>TodoTelescope keywords=TODO,WARN,OPTM,PERF,BUGS,DEAD,MARK,INFO cwd=" ..
+      git_root_or_buf_dir() .. "<cr>",
       desc = "toggle todo telescope"
     },
     -- -- 仅仅检查当前文件中的情况
     -- {
     --   mode = { "n" },
     --   "t<s-m>",
-    --   "<cmd>TodoTelescope keywords=NOTE,INFO,WARN,XXXX,BUGS,TODO,HACK,OPTM,PERF,DEAD,TEST,MARK,PARA,FILE cwd=" ..
+    --   "<cmd>TodoTelescope keywords=NOTE,INFO,WARN,XXXX,BUGS,TODO,HACK,OPTM,PERF,DEAD,TEST,MARK,PARA,FILE
+    --   cwd=" ..
     --   vim.fn.expand('%:p') ..
     --   "<cr>",
     --   desc = "toggle todo Quickfix"

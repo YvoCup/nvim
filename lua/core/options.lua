@@ -67,3 +67,6 @@ for ft, width in pairs(ft_indent) do
   })
 end
 
+-- 设置一行文本长度
+vim.opt.textwidth = 110
+

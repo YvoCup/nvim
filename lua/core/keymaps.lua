@@ -26,8 +26,8 @@ keymap.del('x', 'gra')
 keymap.del('n', 'gri')
 -- 用 no-op 把 `[` 和 `]` 本身映射成空操作
 -- 这样任何带前缀的 [[ ]](){} 等全失效
-keymap.set({"n", "x", "o"}, "[",  "<Nop>", { noremap = true })
-keymap.set({"n", "x", "o"}, "]",  "<Nop>", { noremap = true })
+keymap.set({ "n", "x", "o" }, "[", "<Nop>", { noremap = true })
+keymap.set({ "n", "x", "o" }, "]", "<Nop>", { noremap = true })
 
 -- move
 -- 快速移动
@@ -40,12 +40,15 @@ keymap.set("n", "<s-l>", "5l")
 keymap.set("n", "[[", "^", { noremap = true, silent = true })
 keymap.set("n", "]]", "$", { noremap = true, silent = true })
 
+-- 取消高亮的快捷选项
+keymap.set("n", "<leader>nh", "<cmd>noh<cr>", { noremap = true, silent = true })
+
 -- 单词移动
 vim.keymap.set("n", "w", "b", { noremap = true, silent = true })
 vim.keymap.set("n", "e", "b", { noremap = true, silent = true })
 
 -- 进入插入模式
-vim.keymap.set("n", "a", "a",     { noremap = true, silent = true })
+vim.keymap.set("n", "a", "a", { noremap = true, silent = true })
 vim.keymap.set("n", "<s-a>", "i", { noremap = true, silent = true })
 
 -- locate 定位
@@ -54,3 +57,7 @@ vim.keymap.set('n', '<leader>j', '<C-w>j', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>k', '<C-w>k', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>l', '<C-w>l', { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>q", "<C-w>c", { noremap = true, silent = true })
+
+-- 撤销与重做
+vim.keymap.set("n", "<s-u>", "<c-r>", { noremap = true, silent = true })
+vim.keymap.set("n", "<c-u>", "<c-r>", { noremap = true, silent = true })

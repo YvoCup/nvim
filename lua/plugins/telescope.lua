@@ -79,6 +79,7 @@ return {
     })
     require("telescope").load_extension("file_browser")
     require("telescope").load_extension("persisted")
+    require("telescope").load_extension("hierarchy")
     end,
   keys = {
     {
@@ -87,7 +88,7 @@ return {
       function()
         require("telescope.builtin").find_files({ cwd = git_root_or_buf_dir() })
       end,
-      desc = "telescope find files at pwd"
+      desc = "[telescope] find files at git root"
     },
     {
       mode = "n",
@@ -95,7 +96,7 @@ return {
       function ()
         require('telescope.builtin').live_grep({ cwd = git_root_or_buf_dir() })
       end,
-      desc = "telescope find files at git root"
+      desc = "telescope find live grep at git root"
     },
     { "t<s-b>", "<cmd>Telescope buffers<cr>",    mode = "n", desc = "telescope buffers" },
     { "tn",     "<cmd>Telescope help_tags<cr>",  mode = "n", desc = "telescope help tags" },
@@ -122,18 +123,6 @@ return {
       mode = "n",
       "ge",
       require('telescope.builtin').lsp_references,
-      desc = "references"
-    },
-    {
-      mode = "n",
-      "gu",
-      require('telescope.builtin').lsp_incoming_calls,
-      desc = "references"
-    },
-    {
-      mode = "n",
-      "gU",
-      require('telescope.builtin').lsp_outgoing_calls,
       desc = "references"
     },
     {
