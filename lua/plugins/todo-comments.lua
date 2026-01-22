@@ -1,15 +1,15 @@
 -- 当前项目 Git 根目录；若不在仓库则退到 buffer 所在目录
-local function git_root_or_buf_dir()
-  local dir = vim.fn.expand('%:p:h')
-  if dir == '' then dir = (vim.uv or vim.loop).cwd() end -- 没打开文件时退到 cwd
-
-  local git_root = vim.fn.systemlist('git -C ' .. vim.fn.shellescape(dir) .. ' rev-parse --show-toplevel')[1]
-  if vim.v.shell_error == 0 and git_root ~= '' then
-    return git_root
-  else
-    return dir
-  end
-end
+-- local function git_root_or_buf_dir()
+--   local dir = vim.fn.expand('%:p:h')
+--   if dir == '' then dir = (vim.uv or vim.loop).cwd() end -- 没打开文件时退到 cwd
+--
+--   local git_root = vim.fn.systemlist('git -C ' .. vim.fn.shellescape(dir) .. ' rev-parse --show-toplevel')[1]
+--   if vim.v.shell_error == 0 and git_root ~= '' then
+--     return git_root
+--   else
+--     return dir
+--   end
+-- end
 
 return {
   "folke/todo-comments.nvim",
@@ -97,13 +97,13 @@ return {
       desc = "previous error/warning todo comment",
     },
     -- telescope 查阅重点消息，不会列出一般信息类选项，全局
-    {
-      mode = { "n" },
-      "tm",
-      "<cmd>TodoTelescope keywords=TODO,WARN,OPTM,PERF,BUGS,DEAD,MARK,INFO cwd=" ..
-      git_root_or_buf_dir() .. "<cr>",
-      desc = "toggle todo telescope"
-    },
+    -- {
+    --   mode = { "n" },
+    --   "tm",
+    --   "<cmd>TodoTelescope keywords=TODO,WARN,OPTM,PERF,BUGS,DEAD,MARK,INFO cwd=" ..
+    --   git_root_or_buf_dir() .. "<cr>",
+    --   desc = "toggle todo telescope"
+    -- },
     -- -- 仅仅检查当前文件中的情况
     -- {
     --   mode = { "n" },
@@ -115,11 +115,11 @@ return {
     --   desc = "toggle todo Quickfix"
     -- },
     -- 专门针对 MRAK 做一层标记查阅
-    {
-      mode = { "n" },
-      "t<c-m>",
-      "<cmd>TodoTelescope keywords=MARK cwd=" .. git_root_or_buf_dir() .. "<cr>",
-      desc = "toggle mark lists"
-    },
+    -- {
+    --   mode = { "n" },
+    --   "t<c-m>",
+    --   "<cmd>TodoTelescope keywords=MARK cwd=" .. git_root_or_buf_dir() .. "<cr>",
+    --   desc = "toggle mark lists"
+    -- },
   },
 }
