@@ -21,7 +21,7 @@ vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("yamlls")
 vim.lsp.enable("eslint")
-vim.lsp.enable("pylsp")
+vim.lsp.enable("pyright")
 
 ---------------------------------------------- general configs -----------------------------------------------
 -- 通用配置中包含了部分快捷键配置操作
