@@ -4,14 +4,14 @@
 --       主要依靠高亮组进行图标抓取工作，并重新返回应得的图标
 --       因为是手动控制制作的，因此行号需要重新写相对行号
 
------------------------------------------------- get git current number ------------------------------------------------
+------------------------------------------- get git current number -------------------------------------------
 -- INFO: 由真实行号和虚拟行号组成，虚拟行号会被用特殊字符代替
 -- PARA: lnum: 真实行号
 --       virtnum: 虚拟行号
 local function render_number(lnum, virtnum)
   -- 折叠虚行：只给占位符
   if virtnum ~= 0 then
-    local w = lnum <= 1 and 1 or math.ceil(math.log10(lnum))
+    local w = lnum <= 1 and 1 or #tostring(lnum)
     return (" "):rep(w - 1) .. (virtnum > 0 and "┆" or " ")
   end
   -- 当前行吗？
@@ -21,7 +21,7 @@ local function render_number(lnum, virtnum)
   return num
 end
 
--------------------------------------------------- get signs columns ---------------------------------------------------
+--------------------------------------------- get signs columns ----------------------------------------------
 -- PARA: bufnr: 渲染工作的 buffer
 --       lnum: 获取当前渲染行，是劫持的基础
 --       name: 劫持的高亮字符中通用部分
@@ -61,9 +61,24 @@ local function get_signs(bufnr, lnum, name)
   )
 end
 
------------------------------------------------------ return stc -------------------------------------------------------
+------------------------------------------------ return stc --------------------------------------------------
 -- INFO: 实现整理并输出
+-- local function stc()
+--   local bufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
+--   local lnum, virtnum = vim.v.lnum, vim.v.virtnum
+--   return ("%s%%=%s%s"):format(
+--     get_signs(bufnr, lnum - 1, "Todo"),
+--     render_number(lnum, virtnum),
+--     get_signs(bufnr, lnum - 1, "GitSign")
+--   )
+-- end
 local function stc()
+  -- 如果是 dashboard/nvim-tree 等特殊 buffer，返回空
+  local ft = vim.bo.filetype
+  if ft == "dashboard" or ft == "NvimTree" then
+    return ""
+  end
+
   local bufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
   local lnum, virtnum = vim.v.lnum, vim.v.virtnum
   return ("%s%%=%s%s"):format(
@@ -74,3 +89,4 @@ local function stc()
 end
 
 return { stc = stc }
+
