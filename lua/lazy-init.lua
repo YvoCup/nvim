@@ -25,21 +25,21 @@ require("lazy").setup("plugins")
 
 -- 4. lazy.nvim 模块的高亮设置
 -- 背景
-vim.api.nvim_set_hl(0, "LazyNormal", { bg = "#51576d", fg = "#a0acda" })
+vim.api.nvim_set_hl(0, "LazyNormal",       { bg = "#51576d", fg = "#a0acda" })
 -- 标题
-vim.api.nvim_set_hl(0, "LazyH1", { bg = "#909bb8", fg = "#d2e0fd", bold = true })  -- HOME
-vim.api.nvim_set_hl(0, "LazyH2", { fg = "#d2e0fd", bold = true })  -- 主要是 total 之类的
+vim.api.nvim_set_hl(0, "LazyH1",           { bg = "#909bb8", fg = "#d2e0fd", bold = true })  -- HOME
+vim.api.nvim_set_hl(0, "LazyH2",           { fg = "#d2e0fd", bold = true })  -- 主要是 total 之类的
 -- 按钮部分，按钮的高亮和 H1 一致
 vim.api.nvim_set_hl(0, "LazyButtonActive", { bg = "#909bb8", fg = "#d2e0fd", bold = true })
 vim.api.nvim_set_hl(0, "LazyButton",       { fg = "#777e9e" })
 -- 内容
-vim.api.nvim_set_hl(0, "LazyProp",       { fg = "#5f73aa" })  -- 信息中前面部分，一般是 dir 之类的
-vim.api.nvim_set_hl(0, "LazyDimmed",     { fg = "#b5bfe2" })  -- 信息中内容，一般在 git 中展示
-vim.api.nvim_set_hl(0, "LazyValue",      { fg = "#e5c890" })  -- 一些信息，主要是 version, tag 之类的
-vim.api.nvim_set_hl(0, "LazyTaskOutput", { fg = "#b5bfe2" })  -- 
-vim.api.nvim_set_hl(0, "LazyComment",    { fg = "#a6d189" })  -- 注释
-vim.api.nvim_set_hl(0, "LazyUrl", { fg = "#8caaee" })  -- url 内容
-vim.api.nvim_set_hl(0, "LazyDir", { fg = "#a9c1f4" })  -- dir 内容
+vim.api.nvim_set_hl(0, "LazyProp",         { fg = "#5f73aa" })  -- 信息中前面部分，一般是 dir 之类的
+vim.api.nvim_set_hl(0, "LazyDimmed",       { fg = "#b5bfe2" })  -- 信息中内容，一般在 git 中展示
+vim.api.nvim_set_hl(0, "LazyValue",        { fg = "#e5c890" })  -- 一些信息，主要是 version, tag 之类的
+vim.api.nvim_set_hl(0, "LazyTaskOutput",   { fg = "#b5bfe2" })  -- 
+vim.api.nvim_set_hl(0, "LazyComment",      { fg = "#a6d189" })  -- 注释
+vim.api.nvim_set_hl(0, "LazyUrl",          { fg = "#8caaee" })  -- url 内容
+vim.api.nvim_set_hl(0, "LazyDir",          { fg = "#a9c1f4" })  -- dir 内容
 
-vim.api.nvim_set_hl(0, "LazyCommit",      { fg = "#b07da5" })  -- commit 内容
-vim.api.nvim_set_hl(0, "LazySpecial",     { fg = "#80869c" })  -- 特殊字符
+vim.api.nvim_set_hl(0, "LazyCommit",       { fg = "#b07da5" })  -- commit 内容
+vim.api.nvim_set_hl(0, "LazySpecial",      { fg = "#80869c" })  -- 特殊字符

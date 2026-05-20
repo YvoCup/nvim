@@ -78,7 +78,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end
 })
 
--- format 部分，这部分暂时就先别写了
+-- format 部分，这部分暂时不启用
 -- vim.api.nvim_create_autocmd("BufWritePre", {
 --   callback = function()
 --     local mode = vim.api.nvim_get_mode().mode

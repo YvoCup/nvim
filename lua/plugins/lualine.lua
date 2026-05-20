@@ -61,31 +61,31 @@ return {
             end,
             color = function()
               local m = vim.fn.mode()
-              local bg
+              local fg
               if m == "n" then
-                bg = "#8caaee"      -- Normal 蓝
+                fg = "#8caaee"      -- Normal 蓝
               elseif m == "i" then
-                bg = "#93b979"      -- Insert 绿
+                fg = "#93b979"      -- Insert 绿
               elseif m == "v" or m == "V" or m == "␖" then
-                bg = "#ff97d7"      -- Visual 粉
+                fg = "#ff97d7"      -- Visual 粉
               elseif m == "c" then
-                bg = "#cdb380"      -- Command 橙
+                fg = "#cdb380"      -- Command 橙
               elseif m == "s" or m == "S" or m == "␓" then
-                bg = "#e5c890"      -- Select 黄
+                fg = "#e5c890"      -- Select 黄
               elseif m == "R" or m == "r" then
-                bg = "#e78284"      -- Replace 红
+                fg = "#e78284"      -- Replace 红
               elseif m == "!" then
-                bg = "#cdb380"      -- Shell 命令是更深一级别的橙
+                fg = "#cdb380"      -- Shell 命令是更深一级别的橙
               elseif m == "t" then
-                bg = "#72b1a8"      -- Terminal 灰
+                fg = "#72b1a8"      -- Terminal 灰
               else
-                bg = "#8f9ac2"      -- 未知模式
+                fg = "#8f9ac2"      -- 未知模式
               end
-              return { bg = bg, fg = "#4c5267", gui = "bold" }
+              return { bg = "#323647", fg = fg, gui = "bold" }
             end,
             separator = {
-              left = "",
-              right = "",
+              left = "",
+              right = "",
             },
           },
         },
@@ -188,8 +188,8 @@ return {
             },
             update_in_insert = true,
             always_visible = true,
-            color = { bg = "#51576d" },
-            separator = { left  = '', right = '' },
+            color = { bg = "#323647" },
+            separator = { left  = '', right = '' },
           },
         },
         --------------------------------------------------- x ----------------------------------------------------------
