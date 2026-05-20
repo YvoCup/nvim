@@ -20,11 +20,13 @@ return {
         globalstatus = true,   -- 下划线全局启用
         -- 删除了每个组件中间的符号
         component_separators = { left = "", right = ""},
-        section_separators = {left = "", right = ""},
+        section_separators = { left = "", right = ""},
         -- 在某些 filetype 下不启用 lualine
         disabled_filetypes = {
           -- 状态栏彻底隐藏的文件类型，由 `:set filetype` 指出当前类型
-          statusline = {},
+          statusline = {
+            "TelescopePrompt",
+          },
           -- winbar 也被隐藏
           winbar = {},
         },
@@ -83,10 +85,7 @@ return {
               end
               return { bg = "#323647", fg = fg, gui = "bold" }
             end,
-            separator = {
-              left = "",
-              right = "",
-            },
+            separator = { left = "", right = "" },
           },
         },
         --------------------------------------------------- b ----------------------------------------------------------

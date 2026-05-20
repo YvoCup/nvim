@@ -104,7 +104,8 @@ return {
         ['<S-Tab>'] = { 'select_prev', 'fallback' },
         -- 回车确认补全
         ['<CR>']    = { 'accept', 'fallback' },
-        ['<c-h>'] = { 'show_signature', 'hide_signature', 'fallback' },
+        -- 在函数的参数中，显示参数信息的开关
+        ['<C-h>']   = { 'show_signature', 'hide_signature', 'fallback' },
       },
     })
   end,
