@@ -45,7 +45,9 @@ keymap.set("n", "<leader>nh", "<cmd>noh<cr>", { noremap = true, silent = true })
 
 -- 单词移动
 vim.keymap.set("n", "w", "b", { noremap = true, silent = true })
-vim.keymap.set("n", "e", "b", { noremap = true, silent = true })
+vim.keymap.set("n", "<s-w>", "ge", { noremap = true, silent = true })
+vim.keymap.set("n", "e", "w", { noremap = true, silent = true })
+vim.keymap.set("n", "<s-e>", "e", { noremap = true, silent = true })
 
 -- 进入插入模式
 vim.keymap.set("n", "a", "a", { noremap = true, silent = true })

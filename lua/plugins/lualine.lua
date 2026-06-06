@@ -7,7 +7,7 @@ return {
         -- 必须有这个覆盖 lualine 的底层颜色系
         theme = function()
           local custom_theme = require("lualine.themes.gruvbox")
-          local bg = "#323647"
+          local bg = "NONE"
           custom_theme.normal.c.bg = bg
           custom_theme.insert.c.bg = bg
           custom_theme.visual.c.bg = bg
@@ -83,7 +83,7 @@ return {
               else
                 fg = "#8f9ac2"      -- 未知模式
               end
-              return { bg = "#323647", fg = fg, gui = "bold" }
+              return { bg = "NONE", fg = fg, gui = "bold" }
             end,
             separator = { left = "", right = "" },
           },
@@ -96,7 +96,7 @@ return {
             "branch",
             icon = "",
             color = {
-              bg = "#323647",
+              bg = "NONE",
               fg = "#f4b8e4",
             },
           },
@@ -121,7 +121,7 @@ return {
             end,
             icon = "",
             color = {
-              bg = "#323647",
+              bg = "NONE",
               fg = "#8f9ac2",
             },
           },
@@ -166,7 +166,7 @@ return {
               return icon .. " " .. name
             end,
             color = {
-              bg = "#323647",
+              bg = "NONE",
               fg = "#a9bef2",
             },
           },
@@ -187,7 +187,7 @@ return {
             },
             update_in_insert = true,
             always_visible = true,
-            color = { bg = "#323647" },
+            color = { bg = "NONE" },
             separator = { left  = '', right = '' },
           },
         },
@@ -212,7 +212,7 @@ return {
               modified = ' ',
               removed = ' ',
             },
-            color = { bg = "#323647" },
+            color = { bg = "NONE" },
           },
         },
         --------------------------------------------------- y ----------------------------------------------------------
@@ -232,7 +232,7 @@ return {
             end,
 
             -- 颜色随进度一起变
-            color = { bg = "#323647", fg = "#8f9ac2", gui = 'bold' },
+            color = { bg = "NONE", fg = "#8f9ac2", gui = 'bold' },
             separator = { left = '', right = '' },
           },
           {
@@ -242,7 +242,7 @@ return {
               dos = '',
               mac = '',
             },
-            color = { bg = "#323647", fg = "#8f9ac2" },
+            color = { bg = "NONE", fg = "#8f9ac2" },
           },
         },
       },
