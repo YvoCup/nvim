@@ -1,31 +1,38 @@
 -- FILE: ./lua/lsp-init.lua
 -- INFO: lsp 配置部分，集合了启动、客户端配置、高亮以及快捷键配置方案
 
------------------------------------------------- highlight ---------------------------------------------------
+----------------------------------------------------- highlight --------------------------------------------------------
 vim.api.nvim_set_hl(0, "FloatBorder",     { fg = "#656c87" })
 vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = '#e78284', bold = true })
 vim.api.nvim_set_hl(0, 'DiagnosticWarn',  { fg = '#e5c890', bold = true })
 vim.api.nvim_set_hl(0, 'DiagnosticInfo',  { fg = '#79bdb3', bold = true })
 vim.api.nvim_set_hl(0, 'DiagnosticHint',  { fg = '#9cc480', bold = true })
 
----------------------------------------------- enable lanugage -----------------------------------------------
-vim.lsp.enable("bashls")
-vim.lsp.enable("clangd")
-vim.lsp.enable("qmlls")
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("neocmake")
-vim.lsp.enable("vue_ls")
-vim.lsp.enable("ts_ls")
-vim.lsp.enable("cssls")
-vim.lsp.enable("html")
-vim.lsp.enable("rust_analyzer")
-vim.lsp.enable("jsonls")
-vim.lsp.enable("yamlls")
-vim.lsp.enable("eslint")
-vim.lsp.enable("pyright")
-vim.lsp.enable("just")
+--------------------------------------------------- enable lanugage ----------------------------------------------------
+local servers = {
+  "bashls",
+  "clangd",
+  "qmlls",
+  "lua_ls",
+  "neocmake",
+  "vue_ls",
+  "ts_ls",
+  "cssls",
+  "html",
+  "rust_analyzer",
+  "jsonls",
+  "yamlls",
+  "eslint",
+  "pyright",
+  "just",
+}
 
----------------------------------------------- general configs -----------------------------------------------
+for _, name in ipairs(servers) do
+  vim.lsp.config(name, require("lsp." .. name))
+  vim.lsp.enable(name)
+end
+
+--------------------------------------------------- general configs ----------------------------------------------------
 -- 通用配置中包含了部分快捷键配置操作
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("SetupLSP", {}),
@@ -75,8 +82,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gr", function()
       vim.lsp.buf.rename()
     end, { buffer = event.buf, desc = 'LSP: vim.lsp.buf.rename' })
-
-    -- INFO: 
   end
 })
 

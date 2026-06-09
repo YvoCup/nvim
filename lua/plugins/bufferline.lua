@@ -10,7 +10,7 @@ return {
     require("bufferline").setup({
       highlights = {
         -- 背景色，就是那些完全没有被选择的 buffer 的基础配色
-        background = { bg = "#323647", fg = "#8f9ac2" },
+        background = { bg = "none", fg = "#8f9ac2" },
         -- buffer 是当前激活的 buffer 的配色
         -- 离开当前 buffer 的时候（buffer还可见），是 visible
         -- 选择当前的 buffer 的时候，是 selected

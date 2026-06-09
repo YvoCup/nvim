@@ -3,12 +3,12 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",  -- 安装或者更新配置之后执行
-  branch = "master",    -- 其主要的分支使用
+  branch = "main",      -- 其主要的分支使用
   -- NOTE: Very Lazy
-  enevt = "VeryLazy",   -- 这个
+  event = "VeryLazy",   -- 这个表示懒加载
   -- NOTE: OPTION
   config = function ()  -- 插件内部配置
-    require("nvim-treesitter.configs").setup({
+    require("nvim-treesitter").setup({
       -- 确保安装的 treesitter 头目
       ensure_installed = {
         "lua",
@@ -47,3 +47,4 @@ return {
     })
   end
 }
+
