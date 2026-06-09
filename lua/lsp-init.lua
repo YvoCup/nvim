@@ -9,19 +9,21 @@ vim.api.nvim_set_hl(0, 'DiagnosticInfo',  { fg = '#79bdb3', bold = true })
 vim.api.nvim_set_hl(0, 'DiagnosticHint',  { fg = '#9cc480', bold = true })
 
 ---------------------------------------------- enable lanugage -----------------------------------------------
-vim.lsp.enable("lua_ls")
+vim.lsp.enable("bashls")
 vim.lsp.enable("clangd")
+vim.lsp.enable("qmlls")
+vim.lsp.enable("lua_ls")
 vim.lsp.enable("neocmake")
 vim.lsp.enable("vue_ls")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("cssls")
 vim.lsp.enable("html")
-vim.lsp.enable("bashls")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("yamlls")
 vim.lsp.enable("eslint")
 vim.lsp.enable("pyright")
+vim.lsp.enable("just")
 
 ---------------------------------------------- general configs -----------------------------------------------
 -- 通用配置中包含了部分快捷键配置操作
