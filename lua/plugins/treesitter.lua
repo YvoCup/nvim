@@ -25,6 +25,7 @@ return {
         "vue",
 
         "json",
+        "typst",
       },
 
       -- 高亮启用

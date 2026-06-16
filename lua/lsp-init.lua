@@ -25,6 +25,7 @@ local servers = {
   "eslint",
   "pyright",
   "just",
+  "tinymist"
 }
 
 for _, name in ipairs(servers) do
