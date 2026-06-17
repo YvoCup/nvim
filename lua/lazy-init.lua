@@ -21,11 +21,20 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- 3. 加载 lazy.nvim 模块
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+  ui = {
+    border = "rounded",
+    backdrop = 100,
+    size = { width = 0.618, height = 0.9 },
+  },
+})
+
+-- 覆盖 Lazy 默认 hover 键（未公开 API，但官方 issue 中认可此方式）
+require("lazy.view.config").keys.hover = "P"
 
 -- 4. lazy.nvim 模块的高亮设置
 -- 背景
-vim.api.nvim_set_hl(0, "LazyNormal",       { bg = "#51576d", fg = "#a0acda" })
+-- vim.api.nvim_set_hl(0, "LazyNormal",       { bg = "#51576d", fg = "#a0acda" })
 -- 标题
 vim.api.nvim_set_hl(0, "LazyH1",           { bg = "#909bb8", fg = "#d2e0fd", bold = true })  -- HOME
 vim.api.nvim_set_hl(0, "LazyH2",           { fg = "#d2e0fd", bold = true })  -- 主要是 total 之类的
