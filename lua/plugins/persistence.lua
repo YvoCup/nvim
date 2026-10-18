@@ -1,5 +1,6 @@
 -- FILE: lua/plugins/persistence.lua
--- INFO: 会话保存功能
+-- INFO: Capacity of saving sessions.
+--       会话保存功能      
 return {
   "olimorris/persisted.nvim",
   event = "BufReadPre",
