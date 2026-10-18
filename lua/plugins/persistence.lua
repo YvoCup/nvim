@@ -18,7 +18,7 @@ return {
       mode = "n",
       "ss",
       function ()
-        vim.cmd('SessionSave')
+        require("persistence").save()
         vim.notify('Session saved', vim.log.levels.INFO)
       end,
       desc = "Persisted save"
