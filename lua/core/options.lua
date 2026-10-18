@@ -21,7 +21,7 @@ opt.relativenumber = true   -- 只保留相对行号
 opt.mouse:append("a")
 
 -- 系统剪切板
-opt.clipboard:append("unnamedplus")
+opt.clipboard = "unnamedplus"
 
 -- 将下面的命令行隐藏起来
 vim.o.cmdheight = 0
