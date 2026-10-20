@@ -1,12 +1,25 @@
--- mapleader
+-- FILE: keymaps.lua
+--       General keymaps bindings.
+--       通用键位。
+
+------------------------------------------------------ maplerder -------------------------------------------------------
+-- 引导键
 vim.g.mapleader = " "
 local keymap = vim.keymap
 
--- split
+-------------------------------------------------------- split ---------------------------------------------------------
+-- 分割
 keymap.set("n", "|", ":vsplit<CR>")
 keymap.set("n", "-", ":split<CR>")
 
--- nop
+-- locate 定位
+vim.keymap.set('n', '<leader>h', '<C-w>h', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>j', '<C-w>j', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>k', '<C-w>k', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>l', '<C-w>l', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>q", "<C-w>c", { noremap = true, silent = true })
+
+--------------------------------------------------------- nop ----------------------------------------------------------
 -- 删除一些不必要容易引起麻烦的键
 keymap.set("n", "s", "<Nop>")
 keymap.set("n", "S", "<Nop>")
@@ -29,8 +42,8 @@ keymap.del('n', 'gri')
 keymap.set({ "n", "x", "o" }, "[", "<Nop>", { noremap = true })
 keymap.set({ "n", "x", "o" }, "]", "<Nop>", { noremap = true })
 
--- move
--- 快速移动
+--------------------------------------------------------- move ---------------------------------------------------------
+-- 移动光标
 keymap.set("n", "<s-k>", "5k")
 keymap.set("n", "<s-j>", "5j")
 keymap.set("n", "<s-h>", "5h")
@@ -53,13 +66,7 @@ vim.keymap.set("n", "<s-e>", "e", { noremap = true, silent = true })
 vim.keymap.set("n", "a", "a", { noremap = true, silent = true })
 vim.keymap.set("n", "<s-a>", "i", { noremap = true, silent = true })
 
--- locate 定位
-vim.keymap.set('n', '<leader>h', '<C-w>h', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>j', '<C-w>j', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>k', '<C-w>k', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>l', '<C-w>l', { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>q", "<C-w>c", { noremap = true, silent = true })
-
 -- 撤销与重做
 vim.keymap.set("n", "<s-u>", "<c-r>", { noremap = true, silent = true })
 vim.keymap.set("n", "<c-u>", "<c-r>", { noremap = true, silent = true })
+
