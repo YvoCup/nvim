@@ -10,23 +10,7 @@ return {
   config = function ()  -- 插件内部配置
     require("nvim-treesitter").setup({
       -- 确保安装的 treesitter 头目
-      ensure_installed = {
-        "lua",
-
-        "python",
-
-        "cpp",
-        "c",
-
-        "typescript",
-        "javascript",
-        "html",
-        "css",
-        "vue",
-
-        "json",
-        "typst",
-      },
+      ensure_installed = "all",
 
       -- 高亮启用
       highlight = {
