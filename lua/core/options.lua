@@ -75,12 +75,6 @@ end
 -- 设置一行文本长度
 vim.opt.textwidth = 120
 
-vim.api.nvim_create_autocmd("FileType", {
-  callback = function(args)
-    pcall(vim.treesitter.start, args.buf)
-  end,
-})
-
 -- 设置自动缩进
 vim.o.autoindent = true
 
