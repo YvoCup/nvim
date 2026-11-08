@@ -96,7 +96,7 @@ return {
         lualine_b = {
           {
             "branch",  -- Git branch | git 分支名称
-            icon = "",
+            icon = "",
             color = {
               bg = "NONE",
               fg = "#f4b8e4",
@@ -120,7 +120,7 @@ return {
                 return vim.fn.fnamemodify(file_dir, ":~:.")
               end
             end,
-            icon = "",
+            icon = "",
             color = {
               bg = "NONE",
               fg = "#8f9ac2",
@@ -131,38 +131,38 @@ return {
             function()
               local icons = {
                 lua        = '󰢱',
-                py         = '',
-                js         = '',
-                ts         = '',
-                jsx        = '',
-                tsx        = '',
-                rust       = '',
+                py         = '',
+                js         = '',
+                ts         = '',
+                jsx        = '',
+                tsx        = '',
+                rust       = '',
                 go         = '󰟓',
                 c          = '󰙱',
                 cpp        = '󰙲',
                 cc         = '󰙲',
                 cxx        = '󰙲',
-                java       = '',
+                java       = '',
                 md         = '󰍔',
-                json       = '',
-                yaml       = '',
-                yml        = '',
-                toml       = '',
-                sh         = '',
+                json       = '',
+                yaml       = '',
+                yml        = '',
+                toml       = '',
+                sh         = '',
                 bash       = '󱆃',
                 txt        = '󱞎',
-                html       = '',
-                css        = '',
-                scss       = '',
-                vue        = '',
-                dockerfile = '',
+                html       = '',
+                css        = '',
+                scss       = '',
+                vue        = '',
+                dockerfile = '',
               };
 
               local name = vim.fn.expand('%:t')          -- Full filename | 完整文件名
               if name == "" then return "" end           -- Empty buffer | 空缓冲区
 
               local ext  = vim.fn.expand('%:e')          -- Ext without dot | 后缀
-              local icon = icons[ext] or ''            -- Fallback icon | 默认图标
+              local icon = icons[ext] or ''            -- Fallback icon | 默认图标
 
               return icon .. " " .. name
             end,
@@ -179,7 +179,7 @@ return {
             'diagnostics',
             sources = { "nvim_diagnostic" },
             sections = { 'error', 'warn', 'info', 'hint' },
-            symbols = { error = ' ', warn = ' ', info = ' ', hint = ' '},
+            symbols = { error = ' ', warn = ' ', info = ' ', hint = ' '},
             diagnostics_color = {
               error = { fg = "#e78284" },
               warn  = { fg = "#e5c890" },
@@ -209,9 +209,9 @@ return {
             end,
             colored = true,
             symbols = {
-              added = ' ',
-              modified = ' ',
-              removed = ' ',
+              added = ' ',
+              modified = ' ',
+              removed = ' ',
             },
             color = { bg = "NONE" },
           },
@@ -239,8 +239,8 @@ return {
             'fileformat',
             symbols = {
               unix = '󰣇',
-              dos = '',
-              mac = '',
+              dos = '',
+              mac = '',
             },
             color = { bg = "NONE", fg = "#8f9ac2" },
           },

@@ -19,12 +19,12 @@ return {
     require("gitsigns").setup({
       -- The original signs are the best | 原始的才是最香的
       -- signs = {
-      --   add          = { text = "" },
-      --   change       = { text = "" },
-      --   delete       = { text = "" },
-      --   topdelete    = { text = "" },
-      --   changedelete = { text = "" },
-      --   untracked    = { text = "" },
+      --   add          = { text = " " },
+      --   change       = { text = " " },
+      --   delete       = { text = " " },
+      --   topdelete    = { text = " " },
+      --   changedelete = { text = " " },
+      --   untracked    = { text = " " },
       -- },
 
       signs_staged_enable = false,

@@ -26,36 +26,36 @@ return {
       --       关键字字段：名字、图标、颜色（背景色，前景默认黑）、别名、是否显示图标
       keywords = {
         -- NOTE: undetected comment, for general notes | 一般注意项
-        NOTE = { icon = " ", color = "#9cc480", alt = {} },
+        NOTE = { icon = " ", color = "#9cc480", alt = {} },
         -- INFO: main info part of a comment | 注释的主要信息
-        INFO = { icon = " ", color = "#7f91cd", alt = {} },
+        INFO = { icon = " ", color = "#7f91cd", alt = {} },
         -- WARN: usage/style warnings | 警告用法或写法
         -- XXXX: alias | 别名
-        WARN = { icon = " ", color = "#e5c890", alt = { "XXXX" } },
+        WARN = { icon = " ", color = "#e5c890", alt = { "XXXX" } },
         -- BUGS: this is a bug | 这是一个 bug
-        BUGS = { icon = " ", color = "#c1c8e6" },
+        BUGS = { icon = " ", color = "#c1c8e6" },
         -- TODO: work to be done | 待完成的工作
         -- ERRO: alias | 别名
-        TODO = { icon = " ", color = "#e78284", alt = { "ERRO" } },
+        TODO = { icon = " ", color = "#e78284", alt = { "ERRO" } },
         -- HACK: highlight well-written gems | 写得好的亮点
-        HACK = { icon = " ", color = "#f3e3ca" },
+        HACK = { icon = " ", color = "#f3e3ca" },
         -- OPTM: improvable spots | 可进一步优化
         -- PERF: alias, tracked too | 别名，同样识别
-        PERF = { icon = " ", color = "#9cc480", alt = { "OPTM" } },
+        PERF = { icon = " ", color = "#9cc480", alt = { "OPTM" } },
         -- DEAD: abandoned code | 已抛弃的代码
-        DEAD = { icon = " ", color = "#7b83a0" },
+        DEAD = { icon = " ", color = "#7b83a0" },
         -- EXAM: under testing, not final | 测试阶段，不够完善
-        EXAM = { icon = " ", color = "#8caaee", alt = {} },
+        EXAM = { icon = "󰂓 ", color = "#8caaee", alt = {} },
         -- MARK: quick-find markers | 标记，便于查找
-        MARK = { icon = " ", color = "#f4b8e4" },
+        MARK = { icon = "󰓹 ", color = "#f4b8e4" },
         -- PARA: parameters | 一切参数
         -- DEPS: global deps | 一切全局依赖
         -- RETN: returns | 一切返回
-        PARA = { icon = " ", color = "#e599e5" },
-        DEPS = { icon = " ", color = "#dd74dd" },
-        RETN = { icon = " ", color = "#d460d4" },
+        PARA = { icon = " ", color = "#e599e5" },
+        DEPS = { icon = " ", color = "#dd74dd" },
+        RETN = { icon = " ", color = "#d460d4" },
         -- FILE: filename | 文件名
-        FILE = { icon = " ", color = "#91e0d5" },
+        FILE = { icon = " ", color = "#91e0d5" },
       },
       search = {
         command = 'rg',
