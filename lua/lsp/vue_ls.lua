@@ -1,3 +1,7 @@
+-- FILE: lua/lsp/vue_ls.lua
+-- INFO: Vue LSP (hybrid mode with ts_ls)
+--       Vue 语言服务器（与 ts_ls 混合模式）
+
 ---@diagnostic disable: deprecated
 return {
   cmd = { 'vue-language-server', '--stdio' },

@@ -1,3 +1,7 @@
+-- FILE: lua/lsp/lua_ls.lua
+-- INFO: Lua LSP; runs with zh-cn locale
+--       Lua 语言服务器；使用中文 locale 启动
+
 return {
   cmd = { "lua-language-server", "--locale=zh-cn" },
   filetypes = { "lua" },

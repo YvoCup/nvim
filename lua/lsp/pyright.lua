@@ -1,3 +1,7 @@
+-- FILE: lua/lsp/pyright.lua
+-- INFO: LSP config for pyright
+--       pyright 语言服务器配置
+
 local function set_python_path(command)
   local path = command.args
   local clients = vim.lsp.get_clients {

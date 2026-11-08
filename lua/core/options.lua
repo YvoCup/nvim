@@ -1,3 +1,7 @@
+-- FILE: lua/core/options.lua
+-- INFO: Editor options & per-filetype indent
+--       编辑器选项与按文件类型的缩进
+
 local opt = vim.opt
 opt.termguicolors = true
 

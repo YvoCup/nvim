@@ -1,3 +1,7 @@
+-- FILE: lua/lazy-init.lua
+-- INFO: lazy.nvim bootstrap, UI tweaks & Lazy UI highlights
+--       lazy.nvim 引导、UI 设置与 Lazy 界面高亮
+
 -- 1. 准备 lazy.nvim 模块（存在性检测）
 -- stdpath("data")
 -- macOS/Linux: ~/.local/share/nvim

@@ -1,3 +1,7 @@
+-- FILE: lua/lsp/html.lua
+-- INFO: LSP config for html
+--       html 语言服务器配置
+
 return {
   -- 必须安装 npm i -g vscode-langservers-extracted
   cmd = { 'vscode-html-language-server', '--stdio' },

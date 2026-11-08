@@ -1,6 +1,7 @@
--- FILE: lua/plugins/lazygit.nvim
+-- FILE: lua/plugins/lazygit.lua
 -- INFO: Further nvim integration of the lazygit TUI
 --       lazygit 软件的 nvim 集成封装
+
 return {
   "kdheepak/lazygit.nvim",
   dependencies = {

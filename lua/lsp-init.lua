@@ -1,5 +1,6 @@
--- FILE: ./lua/lsp-init.lua
--- INFO: lsp 配置部分，集合了启动、客户端配置、高亮以及快捷键配置方案
+-- FILE: lua/lsp-init.lua
+-- INFO: LSP master: server list, diagnostics, LspAttach keymaps
+--       LSP 总控：服务器列表、诊断高亮、LspAttach 键位
 
 ----------------------------------------------------- highlight --------------------------------------------------------
 vim.api.nvim_set_hl(0, "FloatBorder",     { fg = "#656c87" })

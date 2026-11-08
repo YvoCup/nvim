@@ -1,3 +1,7 @@
+-- FILE: lua/lsp/bashls.lua
+-- INFO: LSP config for bashls
+--       bashls 语言服务器配置
+
 return {
   cmd = { 'bash-language-server', 'start' },
   settings = {

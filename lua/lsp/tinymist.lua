@@ -1,3 +1,7 @@
+-- FILE: lua/lsp/tinymist.lua
+-- INFO: Typst LSP; defines custom preview/export commands
+--       Typst 语言服务器；定义了预览/导出自定义命令
+
 local function create_tinymist_command(command_name, client, bufnr)
   local export_type = command_name:match 'tinymist%.export(%w+)'
   local info_type = command_name:match 'tinymist%.(%w+)'

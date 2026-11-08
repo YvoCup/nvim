@@ -1,4 +1,4 @@
--- FILE: lua/plugins/notify.nvim
+-- FILE: lua/plugins/notify.lua
 -- INFO: Base notification plugin; mainly custom highlights here
 --       基础通知插件，此处主要改高亮
 

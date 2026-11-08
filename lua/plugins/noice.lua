@@ -1,4 +1,4 @@
--- FILE: lua/plugins/noice.nvim
+-- FILE: lua/plugins/noice.lua
 -- INFO: A polished wrapper over notify; I mainly want its cmd palette
 --       封装 notify 的高级能力，主要看上了其 cmd palette
 

@@ -1,8 +1,6 @@
 -- FILE: lua/core/statuscolumn.lua
--- INFO: 主要实现了如下功能：
---       对特殊状态栏图标的排序，排序过程分为了左中右三个部分
---       主要依靠高亮组进行图标抓取工作，并重新返回应得的图标
---       因为是手动控制制作的，因此行号需要重新写相对行号
+-- INFO: Custom statuscolumn: line numbers + todo/gitsigns, hand-assembled
+--       自定义状态列：行号 + todo/gitsign，手工拼装（分左中右三段）
 
 ------------------------------------------- get git current number -------------------------------------------
 -- INFO: 由真实行号和虚拟行号组成，虚拟行号会被用特殊字符代替

@@ -1,8 +1,7 @@
 -- FILE: lua/plugins/kitty-scrollback.lua
--- INFO: Powerful kitty terminal integration plugin
---       强大的 kitty 终端集成插件
---       Enables kitty scrollback + copy/paste integration
---       支持 kitty 复制粘贴功能
+-- INFO: Kitty terminal integration: scrollback & copy/paste
+--       kitty 终端集成：滚动回溯与复制粘贴
+
 return {
   'mikesmithgh/kitty-scrollback.nvim',
   enabled = true,

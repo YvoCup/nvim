@@ -1,3 +1,7 @@
+-- FILE: lua/lsp/cmake.lua
+-- INFO: LSP config for cmake
+--       cmake 语言服务器配置
+
 return {
   cmd = { 'cmake-language-server' },
   filetypes = { 'cmake' },

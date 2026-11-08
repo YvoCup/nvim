@@ -1,3 +1,7 @@
+-- FILE: lua/lsp/ts_ls.lua
+-- INFO: LSP config for ts_ls
+--       ts_ls 语言服务器配置
+
 return {
   cmd = { 'typescript-language-server', '--stdio' },
   filetypes = {

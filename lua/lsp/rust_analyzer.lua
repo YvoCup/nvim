@@ -1,3 +1,7 @@
+-- FILE: lua/lsp/rust_analyzer.lua
+-- INFO: Rust LSP with mason-managed rust-analyzer binary
+--       Rust 语言服务器；使用 mason 管理的 rust-analyzer 二进制
+
 local function is_descendant(root, path)
   if not path or not root then
     return false

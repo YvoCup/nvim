@@ -1,3 +1,7 @@
+-- FILE: lua/lsp/eslint.lua
+-- INFO: ESLint LSP; registers the LspEslintFixAll command
+--       ESLint 语言服务器；注册了 LspEslintFixAll 命令
+
 local lsp = vim.lsp
 
 local function insert_package_json(files, field, bufname)

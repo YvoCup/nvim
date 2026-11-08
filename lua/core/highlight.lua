@@ -1,3 +1,7 @@
+-- FILE: lua/core/highlight.lua
+-- INFO: Self-maintained color palette & all highlight groups
+--       自维护色板与全部高亮组（透明背景风格）
+
 local color = {
   -- Red
   red_50  = "#fbf1f1",

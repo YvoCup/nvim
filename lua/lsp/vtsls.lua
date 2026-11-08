@@ -1,3 +1,7 @@
+-- FILE: lua/lsp/vtsls.lua
+-- INFO: LSP config for vtsls
+--       vtsls 语言服务器配置
+
 return {
   cmd = { "vtsls", "--stdio" },
   settings = {

@@ -1,3 +1,7 @@
+-- FILE: lua/lsp/yamlls.lua
+-- INFO: LSP config for yamlls
+--       yamlls 语言服务器配置
+
 return {
   cmd = { 'yaml-language-server', '--stdio' },
   filetypes = { 'yaml', 'yaml.docker-compose', 'yaml.gitlab', 'yaml.helm-values' },

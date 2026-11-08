@@ -1,3 +1,7 @@
+-- FILE: init.lua
+-- INFO: Entry point: loads core -> lsp-init -> lazy-init
+--       入口：加载 core -> lsp-init -> lazy-init
+
 local function load_lua_modules(subdir)
   -- 拼接完整路径：~/.config/nvim/lua/<subdir>
   local path = vim.fn.stdpath('config') .. '/lua/' .. subdir

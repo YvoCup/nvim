@@ -1,8 +1,6 @@
 -- FILE: lua/plugins/gitsigns.lua
--- INFO: A nice git plugin: draws git status in the sign column
---       好看的 git 插件，左侧绘制 git 状态
---       Basic keymaps provided, but lazygit is the main interface
---       提供基础键位，不过我主要用 lazygit 控制
+-- INFO: Git status in the sign column; lazygit stays the main interface
+--       左侧绘制 git 状态；lazygit 仍是主要操作入口
 
 ----------------------------------------------------- highlight --------------------------------------------------------
 vim.api.nvim_set_hl(0, "GitSignsAdd",              { bg = "none", fg = "#a6d189" })

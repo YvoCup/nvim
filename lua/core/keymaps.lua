@@ -1,6 +1,6 @@
--- FILE: keymaps.lua
---       General keymaps bindings.
---       通用键位。插件的键位会在每个插件内部管理。
+-- FILE: lua/core/keymaps.lua
+-- INFO: Global keymaps; plugin keys live in each plugin file
+--       全局键位；插件键位分散在各插件文件中管理
 
 ------------------------------------------------------ maplerder -------------------------------------------------------
 -- 引导键
