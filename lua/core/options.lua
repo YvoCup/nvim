@@ -73,7 +73,7 @@ for ft, width in pairs(ft_indent) do
 end
 
 -- 设置一行文本长度
-vim.opt.textwidth = 110
+vim.opt.textwidth = 120
 
 vim.api.nvim_create_autocmd("FileType", {
   callback = function(args)
@@ -81,8 +81,11 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- 设置自动缩进
+vim.o.autoindent = true
+
 -- HACK: 实现复制时刻的文本高亮。
-vim.api.nvim_set_hl(0, "YankFlash", { bg = "#6c8a59" })
+vim.api.nvim_set_hl(0, "YankFlash", { bg = "#6c8a59", bold = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.hl.on_yank({ higroup = "YankFlash", timeout = 300 })
