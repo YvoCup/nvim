@@ -20,13 +20,19 @@ return {
       -- NOTE: incremental selection is disabled to keep
       --       textobject-style search unified; keys kept for reference
       --       为统一 textobject 检索而关闭，键位留作参考
+      -- <CR> in normal: start selection on node at cursor; in visual: expand
+      -- <CR> normal 模式：开始选中光标所在节点；visual 模式：扩大
+      -- <BS> in visual: shrink back to previous node (what mini.ai lacks)
+      -- <BS> visual 模式：缩小回上一层节点（mini.ai 缺的能力）
       incremental_selection = {
-        enable = false,
+        enable = true,
         keymaps = {
-          init_selection    = "<CR>",
-          node_incremental  = "<CR>",
-          scope_incremental = "<Tab>",
-          node_decremental  = "<BS>",
+          init_selection   = "<CR>",
+          node_incremental = "<CR>",
+          node_decremental = "<BS>",
+          -- no scope_incremental: only works in languages with @scope
+          -- captures (very few); <Tab> feels dead | 不设此项：依赖稀少的
+          -- @scope capture，按了没反应
         },
       },
     })

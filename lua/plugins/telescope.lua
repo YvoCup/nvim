@@ -17,7 +17,6 @@ end
 
 return {
   "nvim-telescope/telescope.nvim",
-  lazy = false,
   branch = 'master',
   ---------------------------------------------------- config ----------------------------------------------------------
   config = function()
