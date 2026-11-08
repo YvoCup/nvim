@@ -40,11 +40,16 @@ return {
         inside_last = 'il',
       }
     })
+
+    -- mini.pairs: auto-complete the closing bracket/quote in insert mode
+    -- mini.pairs：插入模式自动补全另一半括号/引号
     require('mini.pairs').setup({
-      modes           = { insert = true, command = false },
-      skip_ts         = { "string" },
-      skip_unbalanced = true,
-      markdown        = true,
+      -- Only modes + mappings are valid top-level keys; unknown keys are
+      -- silently ignored. Verified in source: skip_ts / skip_unbalanced /
+      -- markdown are NOT mini.pairs options (dead config from another plugin)
+      -- 顶层只有 modes 和 mappings 两个合法键；其余键被静默忽略
+      -- （源码验证过：skip_ts/skip_unbalanced/markdown 均不是本插件选项）
+      modes = { insert = true, command = false, terminal = false },
     })
     require('mini.align').setup({
       mappings = {
