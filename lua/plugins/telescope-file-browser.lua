@@ -7,6 +7,7 @@ return {
   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
   lazy = false,
   cmd = {},
+  ------------------------------------------------------ config --------------------------------------------------------
   config = function ()
     require("telescope").setup({
       extensions = {
