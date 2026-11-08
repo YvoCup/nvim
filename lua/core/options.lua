@@ -80,3 +80,12 @@ vim.api.nvim_create_autocmd("FileType", {
     pcall(vim.treesitter.start, args.buf)
   end,
 })
+
+-- HACK: 实现复制时刻的文本高亮。
+vim.api.nvim_set_hl(0, "YankFlash", { bg = "#6c8a59" })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.hl.on_yank({ higroup = "YankFlash", timeout = 300 })
+  end,
+})
+
