@@ -44,8 +44,9 @@ return {
         PERF = { icon = " ", color = "#9cc480", alt = { "OPTM" } },
         -- DEAD: abandoned code | 已抛弃的代码
         DEAD = { icon = " ", color = "#7b83a0" },
-        -- EXAM: under testing, not final | 测试阶段，不够完善
-        EXAM = { icon = "󰂓 ", color = "#8caaee", alt = {} },
+        -- EXAM: under testing, not final; EXAM is its alias (same style)
+        -- TEST: 测试阶段，不够完善；EXAM 为其别名（样式一致）
+        TEST = { icon = "󰂓 ", color = "#8caaee", alt = { "EXAM" } },
         -- MARK: quick-find markers | 标记，便于查找
         MARK = { icon = "󰓹 ", color = "#f4b8e4" },
         -- PARA: parameters | 一切参数
