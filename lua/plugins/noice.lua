@@ -1,5 +1,6 @@
 -- FILE: lua/plugins/noice.nvim
--- INFO: 这个看着像是一个封装好了 notify 的高级能力，我主要是看上了其 cmd plattem 能力
+-- INFO: A polished wrapper over notify; I mainly want its cmd palette
+--       封装 notify 的高级能力，主要看上了其 cmd palette
 
 ----------------------------------------------------- highlight --------------------------------------------------------
 vim.api.nvim_set_hl(0, "NoiceNormal", { fg = "#8caaee", bg = "none", bold = true })
@@ -21,9 +22,8 @@ return {
         progress  = { enabled = false },
         message   = { view = "notify", },
       },
-      -- 消息栏的显示问题
-      routes = {
-        -- 不显示搜索下的 [1/15] 之类的信息
+      routes = {  -- Message display rules | 消息栏的显示规则
+        -- Hide search count like [1/15] | 不显示搜索计数
         {
           filter = {
             event = "msg_show",
@@ -31,7 +31,7 @@ return {
           },
           opts = { skip = true },
         },
-        -- 不显示保存文件信息
+        -- Hide "written" on save | 不显示保存信息
         {
           filter = {
             event = "msg_show",
@@ -40,7 +40,7 @@ return {
           },
           opts = { skip = true },
         },
-        -- 避免所有为空内容的消息弹出
+        -- Skip empty messages | 避免空消息弹出
         {
           filter = {
             event = "msg_show",
@@ -49,7 +49,7 @@ return {
           opts = { skip = true },
         },
       },
-      -- 视图，是命令行、命令行提示的主要部分
+      -- Views: cmdline & popup menu | 视图：命令行与补全弹窗
       views = {
         cmdline_popup = {
           position = {
@@ -80,8 +80,8 @@ return {
           },
         },
       },
-      -- 这个是针对使用 :Noice <para> 下的进一步工作
-      -- 可以专门设置其 filter 等等逻辑
+      -- :Noice <cmd> configs; set filter etc. here
+      -- 针对 :Noice 子命令的配置，可设 filter 逻辑
       commands = {
         history = {
           view = "popup",
@@ -98,19 +98,19 @@ return {
       mode = "n",
       "<leader>nt",
       "<cmd>NoiceTelescope<cr>",
-      desc = "noice history telescope"
+      desc = "noice history telescope | 历史消息搜索"
     },
     {
       mode = "n",
       "<leader>nl",
       "<cmd>Noice history<cr>",
-      desc = "noice history telescope"
+      desc = "noice history | 历史消息"
     },
     {
       mode = "n",
       "<leader>nL",
       "<cmd>Noice all<cr>",
-      desc = "noice history telescope"
+      desc = "noice all messages | 全部消息"
     },
   }
 }

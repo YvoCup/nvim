@@ -1,15 +1,19 @@
--- FILE: kitty-scrollback.lua
---       A power 
---       可以支持 kitty 复制粘贴的功能
+-- FILE: lua/plugins/kitty-scrollback.lua
+-- INFO: Powerful kitty terminal integration plugin
+--       强大的 kitty 终端集成插件
+--       Enables kitty scrollback + copy/paste integration
+--       支持 kitty 复制粘贴功能
 return {
   'mikesmithgh/kitty-scrollback.nvim',
   enabled = true,
   lazy = true,
   cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth', 'KittyScrollbackGenerateCommandLineEditing' },
   event = { 'User KittyScrollbackLaunch' },
-  -- version = '*', -- latest stable version, may have breaking changes if major version changed
-  -- version = '^6.0.0', -- pin major version, include fixes and features that do not have breaking changes
+  ---------------------------------------------------- config ----------------------------------------------------------
+  -- version = '*',       -- Latest stable; may break on major bumps | 最新稳定版
+  -- version = '^6.0.0',  -- Pin major, fixes & features only | 锁定 major 版本
   config = function()
     require('kitty-scrollback').setup()
   end,
 }
+

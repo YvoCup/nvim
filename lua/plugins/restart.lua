@@ -1,15 +1,16 @@
--- FILE: ./lua/plugins/restart.lua
--- INFO: restart nvim.
---       重启 nvim 的功能。
+-- FILE: lua/plugins/restart.lua
+-- INFO: Restart nvim from inside
+--       重启 nvim
+
 return {
   "nazo6/restart.nvim",
-  ------------------------------------------------------ keymaps -------------------------------------------------------
+  ----------------------------------------------------- keys -----------------------------------------------------------
   keys = {
     {
       mode = "n",
       "<leader>r",
       "<cmd>restart<cr>",
-      desc = "restart nvim configs. 重启 nvim 配置"
+      desc = "restart nvim | 重启 nvim"
     }
   }
 }

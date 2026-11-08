@@ -1,5 +1,6 @@
 -- FILE: lua/plugins/notify.nvim
--- INFO: 基础的通知能力，此处主要是修改了起部分的高亮显示
+-- INFO: Base notification plugin; mainly custom highlights here
+--       基础通知插件，此处主要改高亮
 
 ----------------------------------------------------- highlight --------------------------------------------------------
 vim.api.nvim_set_hl(0, "NotifyBackground",  { bg = "#323647", fg = "#323647" })
@@ -27,12 +28,11 @@ return {
   ---------------------------------------------------- config ----------------------------------------------------------
   config = function()
     require("notify").setup({
-      -- NOTE: 此处需要注意必须写死这个，或者写个 highlight 类去实现，不能用 none 代替
+      -- NOTE: must hardcode this or use a highlight group; "none" won't work
+      -- 注意：必须写死或配 highlight，不能用 none 代替
       background_colour = "#323647",
-      -- 滑入方式的控制，采用预设
-      stages = "slide",
-      -- 内部的字符的渲染逻辑，采用预设
-      render = "default",
+      stages = "slide",   -- Preset animation | 滑入动画预设
+      render = "default", -- Preset renderer | 渲染预设
     })
   end,
 }

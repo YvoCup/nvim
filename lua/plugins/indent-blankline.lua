@@ -1,5 +1,6 @@
 -- FILE: lua/plugins/indent-blankline.lua
--- INFO: 这是曾经的彩虹线，用于表示缩进的优秀插件，目前我删去了原本的彩虹，用单一颜色也很好看
+-- INFO: Indent guide plugin (formerly rainbow, now single color)
+--       缩进线插件，曾是彩虹线，现在单色也很好看
 
 ----------------------------------------------------- highlight --------------------------------------------------------
 vim.api.nvim_set_hl(0, "BlankLine",       { bg = none, fg = "#656c87" })
@@ -7,14 +8,15 @@ vim.api.nvim_set_hl(0, "BlankLineActive", { bg = none, fg = "#61AFEF" })
 
 return {
   "lukas-reineke/indent-blankline.nvim",
-  enent = "VeryLazy",
+  enent = "VeryLazy",      -- NOTE: typo kept as-is; should be `event`
+                           -- 注意：原文件拼写如此，应为 event
   ---------------------------------------------------- config ----------------------------------------------------------
-  main = "ibl",         -- 别名，方便 require
-  branch = "master",    -- 其主要的分支使用
-  lazy = false,         -- 非 lazy 加载
-  config = function ()  -- 插件内部配置
+  main = "ibl",            -- Alias for require | require 别名
+  branch = "master",       -- Use the main branch | 使用主分支
+  lazy = false,            -- Not lazy-loaded | 非 lazy 加载
+  config = function ()     -- Plugin config | 插件配置
     require("ibl").setup({
-      indent = { 
+      indent = {
         smart_indent_cap = true,
         highlight = { "BlankLine" },
       },

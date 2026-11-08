@@ -1,5 +1,6 @@
 -- FILE: lua/plugins/blink.lua
--- INFO: 提示符
+-- INFO: Completion popup menu: https://github.com/saghen/blink.cmp
+--       提示符框
 
 ----------------------------------------------------- highlight --------------------------------------------------------
 -- vim.api.nvim_set_hl(0, "BlinkCmpMenu",  { fg = "#527a89" })
@@ -18,7 +19,7 @@ return {
       cmdline = { enabled = false },
       completion = {
         ghost_text = { enabled = false },
-        keyword = { range = "prefix", },  -- 仅前缀匹配
+        keyword = { range = "prefix", }, -- Prefix match only | 仅前缀匹配
         documentation = {
           window = {
             border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
@@ -26,11 +27,11 @@ return {
           },
         },
         menu = {
-          border = "rounded",  -- 圆框
+          border = "rounded",  -- Rounded border | 圆框
           scrollbar = false,
           draw = {
             -- treesitter = {  },
-            -- scrollbar = false,  -- 删除滚动条
+            -- scrollbar = false,  -- Remove scrollbar | 删除滚动条
             columns = {
               -- { "label", "label_description", gap = 1 },
               -- { "kind_icon", gap = 1 },
@@ -40,11 +41,13 @@ return {
             components = {
               label = {
                 width = { fill = true, max = 60 },
-                -- 这个给予了文本的一些补充
+                -- Extra rendering (colors/types) via colorful-menu
+                -- 借助 colorful-menu 渲染文本
                 text = function(ctx)
                   local highlights_info = require("colorful-menu").blink_highlights(ctx)
                   if highlights_info ~= nil then
-                    -- Or you want to add more item to label
+                    -- Use colorful-menu's highlight info as the label text
+                    -- 用 colorful-menu 的高亮信息替换原文本
                     return highlights_info.label
                   else
                     return ctx.label
@@ -59,13 +62,14 @@ return {
                   for _, idx in ipairs(ctx.label_matched_indices) do
                     table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
                   end
-                  -- Do something else
+                  -- Return the merged highlight list
+                  -- 返回合并后的高亮列表
                   return highlights
                 end,
               },
               kind_icon = {
                 width = { fill = true, max = 60 },
-                  highlight = function(ctx)
+                highlight = function(ctx)
                   local highlights = {}
                   local highlights_info = require("colorful-menu").blink_highlights(ctx)
                   if highlights_info ~= nil then
@@ -74,7 +78,8 @@ return {
                   for _, idx in ipairs(ctx.label_matched_indices) do
                     table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
                   end
-                  -- Do something else
+                  -- Return the merged highlight list
+                  -- 返回合并后的高亮列表
                   return highlights
                 end,
               },
@@ -89,22 +94,21 @@ return {
         },
       },
       sources = {
-        -- 会显示的补全来源
-        default = { 'snippets', 'lsp', 'path' },
+        default = { 'snippets', 'lsp', 'path' },  -- Completion sources | 补全来源
         providers = {
           snippets = { score_offset = 1000 },
         },
       },
-      ------------------------------------------------- keys -----------------------------------------------------------
       keymap = {
         preset      = 'default',
-        -- 弹窗里 Tab 选下一条，没弹窗时 fallback 到原 Tab
+        -- <Tab>: next item, fall back when no popup
+        -- 弹窗里 Tab 选下一条，没弹窗时 fallback
         ['<Tab>']   = { 'select_next', 'fallback' },
-        -- Shift-Tab 选上一条
+        -- <S-Tab>: previous item | 弹窗里选上一条
         ['<S-Tab>'] = { 'select_prev', 'fallback' },
-        -- 回车确认补全
-        ['<CR>']    = { 'accept', 'fallback' },
-        -- 在函数的参数中，显示参数信息的开关
+        ['<CR>']    = { 'accept', 'fallback' },   -- Accept completion | 回车确认补全
+        -- Toggle signature help inside function args
+        -- 函数参数中显示/隐藏参数信息
         ['<C-h>']   = { 'show_signature', 'hide_signature', 'fallback' },
       },
     })
