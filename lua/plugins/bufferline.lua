@@ -14,27 +14,27 @@ return {
         background = { bg = "none", fg = "#8f9ac2" },
         -- buffer = inactive; visible = in another window; selected = current
         -- buffer 未激活；visible 在别的窗口可见；selected 当前选中
-        buffer_visible  = { fg = "#8f9ac2", },
-        buffer_selected = { fg = "#c8d4f6", },
-        numbers          = { fg = "#8f9ac2" },  -- Number | 行号
-        numbers_visible  = { fg = "#8f9ac2" },
-        numbers_selected = { fg = "#c8d4f6" },
-        modified          = { fg = "#e78284" },  -- Modified icon | 修改图标
-        modified_visible  = { fg = "#e78284" },
-        modified_selected = { fg = "#e78284" },
+        buffer_visible    = { fg = "#8f9ac2", },
+        buffer_selected   = { fg = "#c8d4f6", },
+        numbers           = { fg = "#8f9ac2", },  -- Number | 行号
+        numbers_visible   = { fg = "#8f9ac2", },
+        numbers_selected  = { fg = "#c8d4f6", },
+        modified          = { fg = "#e78284", },  -- Modified icon | 修改图标
+        modified_visible  = { fg = "#e78284", },
+        modified_selected = { fg = "#e78284", },
         -- LSP diagnostics: 4 severity levels | 四类诊断颜色
-        error_selected   = { fg = "#e78284", bold = true, italic = true, },
-        error_visible    = { fg = "#e78284", },
-        error            = { fg = "#e78284", },
-        warning_selected = { fg = "#e5c890", bold = true, italic = true, },
-        warning_visible  = { fg = "#e5c890", },
-        warning          = { fg = "#e5c890", },
-        info_selected    = { fg = "#79bdb3", bold = true, italic = true, },
-        info_visible     = { fg = "#79bdb3", },
-        info             = { fg = "#79bdb3", },
-        hint_selected    = { fg = "#9cc480", bold = true, italic = true, },
-        hint_visible     = { fg = "#9cc480", },
-        hint             = { fg = "#9cc480", },
+        error_selected    = { fg = "#e78284", bold = true, italic = true, },
+        error_visible     = { fg = "#e78284", },
+        error             = { fg = "#e78284", },
+        warning_selected  = { fg = "#e5c890", bold = true, italic = true, },
+        warning_visible   = { fg = "#e5c890", },
+        warning           = { fg = "#e5c890", },
+        info_selected     = { fg = "#79bdb3", bold = true, italic = true, },
+        info_visible      = { fg = "#79bdb3", },
+        info              = { fg = "#79bdb3", },
+        hint_selected     = { fg = "#9cc480", bold = true, italic = true, },
+        hint_visible      = { fg = "#9cc480", },
+        hint              = { fg = "#9cc480", },
       },
       options = {
         custom_filter = function(buf_number)  -- Filter out buffers | 过滤 buffer
