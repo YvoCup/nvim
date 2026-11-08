@@ -51,14 +51,17 @@ return {
       -- （源码验证过：skip_ts/skip_unbalanced/markdown 均不是本插件选项）
       modes = { insert = true, command = false, terminal = false },
     })
+
+    -- mini.align: align text by separator (e.g. align consecutive = or :)
+    -- mini.align：按分隔符对齐文本（如对齐连续的 = 或 :）
     require('mini.align').setup({
+      -- HACK: 具体使用方式说明：
+      --       按下 <leader>a 或者 <leader>A 之后，再按以下按键实现功能：
+      --
       mappings = {
-        start              = "<leader>a",
-        start_with_preview = "<leader>A",
+        start              = "<leader>a",  -- align directly | 直接对齐
+        start_with_preview = "<leader>A",  -- align with live preview | 对齐+实时预览
       }
-      -- HACK: three props per use: split, justify, merge
-      --       split = separator, justify = l/c/r, merge = join symbol
-      --       三个属性：split 分割方式，justify 左中右，merge 插入符号
     })
   end
 }
