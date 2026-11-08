@@ -58,23 +58,6 @@ return {
         },
         initial_mode = "normal",  -- Default to normal mode | 默认 normal 模式
       },
-      extensions = {
-        file_browser = {
-          grouped = true,     -- Group dirs & files | 分组显示文件夹和文件
-          git_status = false,
-          hidden = {          -- Show hidden files too | 隐藏文件也显示
-            file_browser = true,
-            folder_browser = true
-          },
-        },
-        persisted = {
-          mappings = {
-            ["n"] = {
-              ["y"] = require("telescope").extensions.persisted.copy_session,
-            },
-          }
-        },
-      },
     })
     require("telescope").load_extension("file_browser")
     require("telescope").load_extension("persisted")

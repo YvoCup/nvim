@@ -7,6 +7,34 @@ return {
   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
   lazy = false,
   cmd = {},
+  config = function ()
+    require("telescope").setup({
+      extensions = {
+        file_browser = {
+          grouped = true,     -- Group dirs & files | 分组显示文件夹和文件
+          git_status = false,
+          hidden = {          -- Show hidden files too | 隐藏文件也显示
+            file_browser = true,
+            folder_browser = true
+          },
+          mappings = {
+            ["i"] = {
+              -- <C-n> create new file | <C-n> 新建文件
+              ["<C-n>"] = require("telescope._extensions.file_browser.actions").create,
+              -- <C-x> move file | <C-x> 移动文件
+              ["<C-x>"] = require("telescope._extensions.file_browser.actions").move,
+            },
+            ["n"] = {
+              -- n new file | n 新建文件
+              ["n"] = require("telescope._extensions.file_browser.actions").create,
+              -- x move file | x 移动文件
+              ["x"] = require("telescope._extensions.file_browser.actions").move,
+            },
+          },
+        },
+      },
+    })
+  end,
   ----------------------------------------------------- keys -----------------------------------------------------------
   keys = {
     {

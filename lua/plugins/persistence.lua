@@ -2,18 +2,31 @@
 -- INFO: Session management, restricted to git repos under ~/Projects
 --       会话管理，仅 ~/Projects 下的 git 仓库启用
 
+-- Whitelist of directories allowed to own sessions; add or remove entries here.
+-- 允许拥有会话的目录白名单；以后直接在此增删。
+local SESSION_DIRS = { "~/Projects", "~/.config" }
+
 -- Check whether the current cwd is allowed to own a session:
--- inside ~/Projects, a git repo, and exactly at the repo root.
+-- inside a whitelisted dir, a git repo, and exactly at the repo root.
 -- Returns ok (bool) plus err (reason string, nil when ok).
--- 检查当前目录是否允许拥有会话：在 ~/Projects 内、是 git 仓库、
+-- 检查当前目录是否允许拥有会话：在白名单目录内、是 git 仓库、
 -- 且正好位于仓库根目录。返回 ok（布尔）和 err（原因字符串，成功时为 nil）。
 local function can_save()
-  local cwd  = vim.fn.getcwd()
-  local root = vim.fn.expand("~/Projects")
-  -- boundary check: "/x/ProjectsX" must not match "/x/Projects"
-  -- 边界校验："/x/ProjectsX" 不能误判为 "/x/Projects" 的子目录
-  if cwd ~= root and cwd:sub(1, #root + 1) ~= root .. "/" then
-    return false, "not under ~/Projects"
+  local cwd = vim.fn.getcwd()
+  local in_whitelist = false
+  for _, dir in ipairs(SESSION_DIRS) do
+    -- expand ~, resolve() so symlinked paths compare equal
+    -- 展开 ~，resolve() 解析软链接保证比较等价
+    local root = vim.fn.resolve(vim.fn.expand(dir))
+    -- boundary check: "/x/ProjectsX" must not match "/x/Projects"
+    -- 边界校验："/x/ProjectsX" 不能误判为 "/x/Projects" 的子目录
+    if cwd == root or cwd:sub(1, #root + 1) == root .. "/" then
+      in_whitelist = true
+      break
+    end
+  end
+  if not in_whitelist then
+    return false, "not under " .. table.concat(SESSION_DIRS, " or ")
   end
   -- rev-parse --show-toplevel prints the repo root; non-zero exit = not a repo
   -- rev-parse --show-toplevel 输出仓库根目录；退出码非 0 即不在仓库内
@@ -157,7 +170,9 @@ return {
     require("persisted").setup({
       autostart      = true,             -- save on exit | 退出时自动保存
       use_git_branch = true,             -- one session per branch | 按分支分别存会话
-      allowed_dirs   = { "~/Projects" }, -- gate auto behaviors | 限制自动行为目录
+      -- gate auto behaviors; keep in sync with SESSION_DIRS above
+      -- 限制自动行为目录；与上方 SESSION_DIRS 保持一致
+      allowed_dirs   = SESSION_DIRS,
       -- runs before every save; false skips it. Dir rules live in
       -- can_save, this adds the dashboard rule
       -- 每次保存前调用，返回 false 则跳过。目录规则在 can_save 里，
@@ -195,9 +210,17 @@ return {
         if not ok then
           -- say why, so a refused save doesn't feel like a dead key
           -- 说明拒绝原因，避免按键像失灵
-          vim.notify("Session not saved: " .. err, vim.log.levels.INFO, { title = "Sessions" })
+          vim.notify("Session not saved: " .. err, vim.log.levels.ERROR, { title = "Sessions" })
         else
-          require("persisted").save()
+          local p = require("persisted")
+          -- save first, then derive a readable name from the written path
+          -- 先保存，再从写入路径推导可读名称
+          p.save()
+          local path   = p.current()
+          local name   = path:gsub(vim.fn.stdpath("data") .. "/sessions/", ""):gsub("%%", "/")
+          local branch = name:match("@@(.+)")
+          if branch then name = name:gsub("@@.+", "") .. "  [" .. branch .. "]" end
+          vim.notify("Session saved: " .. name, vim.log.levels.INFO, { title = "Sessions" })
         end
       end,
       desc = "Save session (repo root only) | 保存会话（仅仓库根目录）",
