@@ -41,6 +41,15 @@ keymap.del('n', 'gri')
 keymap.set({ "n", "x", "o" }, "[", "<Nop>", { noremap = true })
 keymap.set({ "n", "x", "o" }, "]", "<Nop>", { noremap = true })
 
+-- Unload native Ctrl+hjkl in normal/visual mode to free them for mini.move:
+-- <C-l> = redraw + clear hlsearch; <C-h/j/k/l> in visual = hjkl aliases
+-- 卸载 normal/visual 模式的原生 Ctrl+hjkl，让给 mini.move：
+-- <C-l> = 重绘并清除搜索高亮；可视模式下 <C-h/j/k/l> 为 hjkl 的冗余别名
+keymap.set({ "n", "x" }, "<C-h>", "<Nop>", { noremap = true })
+keymap.set({ "n", "x" }, "<C-j>", "<Nop>", { noremap = true })
+keymap.set({ "n", "x" }, "<C-k>", "<Nop>", { noremap = true })
+keymap.set({ "n", "x" }, "<C-l>", "<Nop>", { noremap = true })
+
 --------------------------------------------------------- move ---------------------------------------------------------
 -- 移动光标
 keymap.set("n", "<s-k>", "5k")
