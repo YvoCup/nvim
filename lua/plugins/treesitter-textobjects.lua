@@ -41,7 +41,7 @@ return {
   keys = {
     {
       mode = { "n" },
-      "<leader>pn",
+      "ipn",
       function ()
         require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
       end,
@@ -49,7 +49,7 @@ return {
     },
     {
       mode = { "n" },
-      "<leader>pp",
+      "ipp",
       function ()
         require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.inner")
       end,
