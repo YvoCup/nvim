@@ -2,6 +2,12 @@
 -- INFO: File browser extension for telescope
 --       telescope 的文件浏览器扩展
 
+-- Highlight links: git status marks follow GitSigns palette | 高亮链接：git 状态标记沿用 GitSigns 色板
+vim.api.nvim_set_hl(0, "TelescopeResultsDiffAdd", { link = "GitSignsAdd" })
+vim.api.nvim_set_hl(0, "TelescopeResultsDiffChange", { link = "GitSignsChange" })
+vim.api.nvim_set_hl(0, "TelescopeResultsDiffDelete", { link = "GitSignsDelete" })
+vim.api.nvim_set_hl(0, "TelescopeResultsDiffUntracked", { link = "GitSignsAdd" })
+
 return {
   "nvim-telescope/telescope-file-browser.nvim",
   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
@@ -12,7 +18,19 @@ return {
       extensions = {
         file_browser = {
           grouped = true,     -- Group dirs & files | 分组显示文件夹和文件
-          git_status = false,
+          -- Show git status marks; symbols borrowed from starship git_status module
+          -- 显示 git 状态标记，符号借鉴 starship 的 git_status 模块
+          git_status = true,
+          git_icons = {
+            added     = "",   -- starship: added | 新增
+            changed   = "",   -- starship: modified | 修改
+            deleted   = "",   -- starship: deleted | 删除
+            untracked = "",   -- same family as lualine diff symbols | 与 lualine diff 同族的未跟踪图标
+            -- renamed/copied/unmerged not covered here, plugin defaults kept
+            -- renamed/copied/unmerged 此处不采用 starship 符号，保留插件默认
+          },
+          display_stat = { size = true, date = true },   -- Omit mode to hide perms | 不写 mode 即隐藏权限列
+          respect_gitignore = false,   -- Don't skip files in .gitignore | 不跳过被 gitignore 的文件
           hidden = {          -- Show hidden files too | 隐藏文件也显示
             file_browser = true,
             folder_browser = true
@@ -70,4 +88,3 @@ return {
     },
   },
 }
-

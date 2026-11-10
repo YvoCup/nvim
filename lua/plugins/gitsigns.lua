@@ -8,7 +8,7 @@ vim.api.nvim_set_hl(0, "GitSignsChange",           { bg = "none", fg = "#d9be88"
 vim.api.nvim_set_hl(0, "GitSignsDelete",           { bg = "none", fg = "#e78284" })
 vim.api.nvim_set_hl(0, "GitSignsChangedelete",     { bg = "none", fg = "#eba3a4" })
 vim.api.nvim_set_hl(0, "GitSignsTopdelete",        { bg = "none", fg = "#eba3a4" })
-vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { fg = "#8f9ac2", bold = true })  -- EOL blame | 行尾 blame
+vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { fg = "#6e7daf", bold = true })  -- EOL blame | 行尾 blame
 
 return {
   "lewis6991/gitsigns.nvim",
