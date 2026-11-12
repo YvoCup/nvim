@@ -22,10 +22,10 @@ return {
           -- 显示 git 状态标记，符号借鉴 starship 的 git_status 模块
           git_status = true,
           git_icons = {
-            added     = "",   -- starship: added | 新增
-            changed   = "",   -- starship: modified | 修改
-            deleted   = "",   -- starship: deleted | 删除
-            untracked = "",   -- same family as lualine diff symbols | 与 lualine diff 同族的未跟踪图标
+            added     = "A",   -- starship: added | 新增
+            changed   = "M",   -- starship: modified | 修改
+            deleted   = "D",   -- starship: deleted | 删除
+            untracked = "U",   -- same family as lualine diff symbols | 与 lualine diff 同族的未跟踪图标
             -- renamed/copied/unmerged not covered here, plugin defaults kept
             -- renamed/copied/unmerged 此处不采用 starship 符号，保留插件默认
           },
