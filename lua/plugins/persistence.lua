@@ -165,7 +165,8 @@ return {
     -- empty buffers leaked into sessions; keep only useful parts
     -- vim 默认值含 "terminal"/"blank"，终端与空 buffer 曾因此混进会话；
     -- 这里只保留有用的部分
-    vim.o.sessionoptions = "buffers,curdir,folds,globals,tabpages,winpos,winsize"
+    -- NOTE: 不保存 folds——ufo 挂载时会重新计算，保存反而覆盖 foldlevelstart 的默认展开
+    vim.o.sessionoptions = "buffers,curdir,globals,tabpages,winpos,winsize"
 
     require("persisted").setup({
       autostart      = true,             -- save on exit | 退出时自动保存
