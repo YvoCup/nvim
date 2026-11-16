@@ -53,15 +53,11 @@ return {
       linehl     = false,  -- Highlight whole lines | 整行高亮
       word_diff  = false,
 
-      watch_gitdir = {
-        follow_files = false
-      },
-
       -- No border by default (falls back to vim.o.winborder) | 默认无边框（回退到 vim.o.winborder），显式加圆角边框
       preview_config = { border = "rounded" },
 
       auto_attach = true,
-      attach_to_untracked = false,
+      attach_to_untracked = true,
       -- Current line blame; toggle with :Gitsigns toggle_current_line_blame
       -- 当前行 blame，可用命令切换
       current_line_blame = true,
