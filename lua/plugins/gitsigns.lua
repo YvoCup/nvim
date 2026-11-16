@@ -8,7 +8,20 @@ vim.api.nvim_set_hl(0, "GitSignsChange",           { bg = "none", fg = "#d9be88"
 vim.api.nvim_set_hl(0, "GitSignsDelete",           { bg = "none", fg = "#e78284" })
 vim.api.nvim_set_hl(0, "GitSignsChangedelete",     { bg = "none", fg = "#eba3a4" })
 vim.api.nvim_set_hl(0, "GitSignsTopdelete",        { bg = "none", fg = "#eba3a4" })
+
 vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { fg = "#6e7daf", bold = true })  -- EOL blame | 行尾 blame
+
+-- Staged hunks: darker variants of the same palette | 已暂存部分：同色系暗色版
+vim.api.nvim_set_hl(0, "GitSignsStagedAdd",            { bg = "none", fg = "#6c8a59" })
+vim.api.nvim_set_hl(0, "GitSignsStagedAddNr",          { bg = "none", fg = "#80a269" })
+vim.api.nvim_set_hl(0, "GitSignsStagedChange",         { bg = "none", fg = "#927f5a" })
+vim.api.nvim_set_hl(0, "GitSignsStagedChangeNr",       { bg = "none", fg = "#a99369" })
+vim.api.nvim_set_hl(0, "GitSignsStagedDelete",         { bg = "none", fg = "#9a2d31" })
+vim.api.nvim_set_hl(0, "GitSignsStagedDeleteNr",       { bg = "none", fg = "#b3363a" })
+vim.api.nvim_set_hl(0, "GitSignsStagedChangedelete",   { bg = "none", fg = "#8e292c" })
+vim.api.nvim_set_hl(0, "GitSignsStagedChangedeleteNr", { bg = "none", fg = "#b3363a" })
+vim.api.nvim_set_hl(0, "GitSignsStagedTopdelete",      { bg = "none", fg = "#8e292c" })
+vim.api.nvim_set_hl(0, "GitSignsStagedTopdeleteNr",    { bg = "none", fg = "#b3363a" })
 
 return {
   "lewis6991/gitsigns.nvim",
@@ -25,7 +38,7 @@ return {
       --   untracked    = { text = " " },
       -- },
 
-      signs_staged_enable = false,
+      signs_staged_enable = true,   -- Show staged hunks with dimmer signs | 已暂存内容用暗色 sign 显示
 
       signcolumn = true,
       numhl      = true,   -- Highlight line numbers | 行号高亮
