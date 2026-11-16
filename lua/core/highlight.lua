@@ -231,7 +231,7 @@ hi("Directory",  { fg = color.blue_400 })   -- 与文档相关操作
 hi("Search",     { bg = "#5e77be", gui = "bold" })
 hi("CurSearch",  { bg = "#5e77be", gui = "bold" })
 hi("Visual",     { bg = "#656c87", gui = "bold" })
-hi("MatchParen", { bg = "#51576d", gui = "bold" })
+hi("MatchParen", { bg = "#656c87", gui = "bold" })
 
 -- hi("Added",      { fg = color.green })
 -- hi("Changed",    { fg = color.yellow })
