@@ -210,7 +210,7 @@ hi("NonText",            { fg = "#6e7daf" })
 -- 行号与光标
 hi("CursorLineNr", { fg = color.blue_400 })
 hi("CursorLine",   {})
-hi("LineNr",       { fg = color.gray_500 })
+hi("LineNr",       { fg = "#ebeef5" })
 
 -- 语法高亮
 hi("Comment",    { fg = color.cyan_300,   gui = "italic" })       -- 注释
