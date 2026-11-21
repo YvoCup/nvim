@@ -30,6 +30,7 @@ return {
           -- Set by `:set filetype` | 由 :set filetype 决定
           statusline = {
             "TelescopePrompt",
+            "kitty-scrollback",   -- Scrollback buffer needs no statusline | 回溯 buffer 无需状态栏
           },
           winbar = {},  -- winbar hidden too | winbar 同样隐藏
         },

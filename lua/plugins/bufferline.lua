@@ -6,6 +6,8 @@ return {
   "akinsho/bufferline.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   event = "VeryLazy",
+  -- Skip in kitty-scrollback instance to avoid tabline flicker | 回溯实例中不加载，避免 tabline 闪烁
+  cond = vim.env.KITTY_SCROLLBACK_NVIM == nil,
   ---------------------------------------------------- config ----------------------------------------------------------
   config = function()
     require("bufferline").setup({

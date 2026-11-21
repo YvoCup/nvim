@@ -9,10 +9,20 @@ return {
   cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth', 'KittyScrollbackGenerateCommandLineEditing' },
   event = { 'User KittyScrollbackLaunch' },
   ---------------------------------------------------- config ----------------------------------------------------------
-  -- version = '*',       -- Latest stable; may break on major bumps | 最新稳定版
-  -- version = '^6.0.0',  -- Pin major, fixes & features only | 锁定 major 版本
   config = function()
-    require('kitty-scrollback').setup()
+    -- Scrollback-only instance: set UI defaults before window creation, no flicker
+    -- 此实例只承载回溯 buffer，在窗口创建前设好默认值，避免启动闪烁
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+    vim.opt.signcolumn = 'no'
+    vim.opt.statuscolumn = ''
+    -- Map y to system clipboard in scrollback buffer | 回溯 buffer 中 y 直接复制到系统剪贴板
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = 'kitty-scrollback',
+      callback = function(ev)
+        vim.keymap.set({ 'n', 'v' }, 'y', '"+y', { buffer = ev.buf })
+      end,
+    })
   end,
 }
 
