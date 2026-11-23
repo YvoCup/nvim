@@ -3,10 +3,12 @@
 --       telescope 的文件浏览器扩展
 
 -- Highlight links: git status marks follow GitSigns palette | 高亮链接：git 状态标记沿用 GitSigns 色板
-vim.api.nvim_set_hl(0, "TelescopeResultsDiffAdd", { link = "GitSignsAdd" })
-vim.api.nvim_set_hl(0, "TelescopeResultsDiffChange", { link = "GitSignsChange" })
-vim.api.nvim_set_hl(0, "TelescopeResultsDiffDelete", { link = "GitSignsDelete" })
+vim.api.nvim_set_hl(0, "TelescopeResultsDiffAdd",       { link = "GitSignsAdd" })
+vim.api.nvim_set_hl(0, "TelescopeResultsDiffChange",    { link = "GitSignsChange" })
+vim.api.nvim_set_hl(0, "TelescopeResultsDiffDelete",    { link = "GitSignsDelete" })
 vim.api.nvim_set_hl(0, "TelescopeResultsDiffUntracked", { link = "GitSignsAdd" })
+-- NOTE: renamed/copied/unmerged are hardcoded to DiffChange by the plugin (yellow), no separate color possible
+--       renamed/copied/unmerged 的高亮组被插件写死为 DiffChange（黄色），无法单独配色
 
 return {
   "nvim-telescope/telescope-file-browser.nvim",
@@ -25,9 +27,10 @@ return {
             added     = "A",   -- starship: added | 新增
             changed   = "M",   -- starship: modified | 修改
             deleted   = "D",   -- starship: deleted | 删除
+            copied    = "C",   -- starship: copied | 复制
+            renamed   = "R",   -- starship: renamed | 重命名
             untracked = "U",   -- same family as lualine diff symbols | 与 lualine diff 同族的未跟踪图标
-            -- renamed/copied/unmerged not covered here, plugin defaults kept
-            -- renamed/copied/unmerged 此处不采用 starship 符号，保留插件默认
+            unmerged  = "!",   -- "U" taken by untracked | U 已被 untracked 占用，颜色随 DiffChange（插件写死）
           },
           display_stat = { size = true, date = true },   -- Omit mode to hide perms | 不写 mode 即隐藏权限列
           respect_gitignore = false,   -- Don't skip files in .gitignore | 不跳过被 gitignore 的文件
