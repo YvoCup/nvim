@@ -5,7 +5,11 @@
 ---@diagnostic disable: deprecated
 return {
   cmd = { 'vue-language-server', '--stdio' },
-  filetypes = { 'vue', 'typescript', 'javascript' },
+  -- vue_ls must NOT attach to plain ts/js buffers: in hybrid mode it provides
+  -- nothing there and only duplicates/conflicts with ts_ls & vtsls.
+  -- vue_ls 不能附着普通 ts/js 文件：混合模式下它在那里不提供任何能力，
+  -- 只会与 ts_ls、vtsls 重复/冲突。
+  filetypes = { 'vue' },
   root_markers = { 'package.json' },
   init_options = {
     vue = {

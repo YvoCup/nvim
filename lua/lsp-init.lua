@@ -18,6 +18,7 @@ local servers = {
   "neocmake",
   "vue_ls",
   "ts_ls",
+  "vtsls",
   "cssls",
   "html",
   "rust_analyzer",

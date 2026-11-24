@@ -8,8 +8,7 @@ return {
     "typescript",
     "javascript",
     "javascriptreact",
-    "typescriptreact",
-    "vue"
+    "typescriptreact"
   },
   root_markers = {
     'tsconfig.json',
@@ -23,7 +22,9 @@ return {
     plugins = {
       {
         name = "@vue/typescript-plugin",
-        location = "/usr/local/lib/node_modules/@vue/language-server",
+        -- The old path did not exist; point at Mason like vtsls does.
+        -- 原路径不存在；与 vtsls 一致指向 Mason 安装目录。
+        location = vim.fn.expand("$HOME/.local/share/nvim/mason/packages/vue-language-server/node_modules/@vue/language-server"),
         languages = { "javascript", "typescript", "vue" },
       },
     },
